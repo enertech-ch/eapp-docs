@@ -1,0 +1,74 @@
+#!/bin/sh
+
+export HUGO_SRC="./src"
+export HUGO_DEST="../public"
+export HUGO_URL="http://localhost:1313/"
+
+APPS="hugo"
+
+usage() {
+	# command help:
+	echo "
+### Lexdocs Application Simple Commands ###
+
+$0 up
+    start applications
+
+$0 down
+    end applications
+
+$0 build
+    builds assets for production
+
+$0 update
+    updates dependencies
+
+	";
+} # => usage()
+
+up() {
+	# command up:
+	docker-compose up -d $APPS
+} # => up()
+
+down() {
+	# command down:
+	docker-compose down
+} # => down()
+
+build_assets() {
+	# command build_assets:
+	docker-compose run --rm hugo -b ${HUGO_URL} -s ${HUGO_SRC} -d ${HUGO_DEST} "$@"
+} # => build_assets()
+
+update() {
+	# command down:
+	git submodule foreach git pull
+} # => update()
+
+# get command name
+cmd="$1"
+
+# determine how we were called, then hand off to the function responsible
+[ -n "$1" ] && shift # scrape off command
+case "$cmd" in
+	up)
+		 up "$@"
+		;;
+    down)
+		 down "$@"
+		;;
+    build)
+		 build_assets "$@"
+		;;
+    update)
+    	 update "$@"
+    	;;
+	""|help|-h|--help|--usage)
+		usage "$1"
+		exit 0
+		;;
+	*)
+		echo "Unknown command '$cmd'. Run without commands for usage help."
+		;;
+esac

@@ -1,0 +1,16 @@
+<span 
+
+class='lga-button
+{{if (isset .Params "type")}}
+   {{.Get "type"}}
+{{else}}
+    default
+{{end}}
+'
+>
+    {{if (isset .Params "icon")}}
+        <i class="material-icons">{{.Get "icon"}}</i>
+    {{end}}
+
+    <text>{{ .Get "text" }}</text>
+</span>

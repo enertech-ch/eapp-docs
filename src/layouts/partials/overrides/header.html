@@ -1,0 +1,6 @@
+{{ "<!-- Material Icons to show the user the same icons in app and documentation -->" | safeHTML }}
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons"
+rel="stylesheet">
+{{ "<!-- Custom Stylesheet -->" | safeHTML }}
+{{ $custom_css := resources.Get "css/custom.css" | minify}}
+<link href="{{ $custom_css.Permalink }}" rel="stylesheet" media="screen"/>

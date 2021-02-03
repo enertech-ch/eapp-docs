@@ -1,0 +1,154 @@
+body {
+    overflow-y:scroll;
+}
+
+.content * {
+    margin-bottom: 0;
+  }
+
+  .content > * {
+    margin-bottom: 20px;
+  }
+
+.tooltipable {
+    position: relative;
+    display: inline-block;
+    border-bottom: 1px dotted black;
+}
+
+.tooltipable .tooltip-content {
+    max-width: max-content;
+    border-radius: 6px;
+    text-align: center;
+    background-color: rgba(255,255,255,.8);
+    border: 1px solid rgba(0,0,0,.8);
+    padding: 5px 10px;
+    margin: auto;
+}
+
+.tooltipable .tooltip-wrapper {
+    visibility: hidden;
+    width: 600px;
+    bottom: 100%;
+    left: 50%;
+    margin-left: calc(-600px * 0.5);
+    position: absolute;
+    z-index: 1;
+}
+
+.tooltipable .tooltip-wrapper::after {
+    content: " ";
+    position: absolute;
+    top: 100%; /* At the bottom of the tooltip */
+    left: 50%;
+    margin-left: -5px;
+    border-width: 5px;
+    border-style: solid;
+    border-color: black transparent transparent transparent;
+  }
+
+.tooltipable:hover .tooltip-wrapper {
+    visibility: visible;
+}
+
+
+.techexplain {
+    margin: 2rem;
+    margin-right: 0;
+    position: relative;
+    border-left: 1px dotted;
+    border-top: 1px dotted;
+    border-bottom: 1px dotted;
+  }
+  
+.techexplain p {
+    padding: 10px;
+    margin: 0;
+}
+
+.lga-button {
+    text-transform: uppercase;
+    display: inline-block;
+    padding: .2rem .5rem;
+    margin: 0 .2rem;
+}
+
+.lga-button.default {
+    background-color: rgb(219, 40, 40);
+    color: rgb(255, 255, 255);
+}
+
+.lga-button.negative {
+    background-color: transparent;
+    color: rgb(219, 40, 40);
+    font-weight: bold;
+}
+
+.lga-button > i {
+    vertical-align: bottom;
+    margin-right: 0.5rem;
+}
+
+.lga-button > text {
+    font-size: 90%;
+}
+
+.lga-nav {
+    background-color: #e4e4e4;
+    color: rgb(219, 40, 40);
+    padding: .2rem .5rem;
+    display: inline-block;
+}
+
+.lga-tab {
+    border-bottom: 2px solid rgb(219, 40, 40);
+    color: rgb(219, 40, 40);
+    padding: 0 .5rem;
+    text-transform: uppercase;
+    display: inline-block;
+}
+
+.lga-label {
+    color: rgba(0,0,0,.87);
+    padding: 0 .25rem;
+    font-weight: lighter;
+    font-size: 90%;
+    display: inline-block;
+
+}
+
+.lga-input {
+    border-bottom: 1px solid #000;
+    color: rgba(0,0,0,.87);
+    padding: 0 .25rem;
+    font-size: 98%;
+    display: inline-block;
+}
+
+lga-struct {
+    display: block;
+    margin: 0;
+    padding: 0;
+    padding-top: 0.5rem;
+    padding-left: 1rem;
+    margin-left: 0.5rem
+}
+
+lga-struct > lga-struct{
+    border-left: 1px solid;
+}
+
+lga-struct.group {
+    color: #860069;
+    border-color: #860069;
+}
+
+lga-struct.meter {
+    color: #000d86;
+    border-color: #000d86;
+}
+
+lga-struct.unit {
+    color: #007c92;
+    border-color: #007c92;
+}
