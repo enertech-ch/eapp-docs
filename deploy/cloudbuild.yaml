@@ -1,5 +1,5 @@
 steps:
-- name: 'eu.gcr.io/cloud-builders/git'
+- name: 'gcr.io/cloud-builders/git'
   args: ['clone', '--recursive', 'https://github.com/lextira/lexgate-docs', 'lexgate-docs']
 
 - name: 'eu.gcr.io/$PROJECT_ID/docs-builder'
@@ -7,6 +7,6 @@ steps:
          '-d',  '../public']
   dir: 'lexgate-docs'
 
-- name: 'eu.gcr.io/cloud-builders/gsutil'
+- name: 'gcr.io/cloud-builders/gsutil'
   args: ['-m', 'cp', '-r', './public/*', 'gs://docs.lexgate.ch']
   dir: 'lexgate-docs'
