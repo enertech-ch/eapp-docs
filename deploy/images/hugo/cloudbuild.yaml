@@ -1,12 +1,12 @@
 steps:
-- name: 'eu.gcr.io/cloud-builders/git'
+- name: 'gcr.io/cloud-builders/git'
   args: ['clone', 'https://github.com/lextira/lexgate-docs', 'lexgate-docs']
 
-- name: 'eu.gcr.io/cloud-builders/docker'
-  args: ['build', '--tag=gcr.io/${PROJECT_ID}/docs-builder:latest', './deploy/images/hugo/']
+- name: 'gcr.io/cloud-builders/docker'
+  args: ['build', '--tag=eu.gcr.io/${PROJECT_ID}/docs-builder:latest', './deploy/images/hugo/']
   dir: 'lexgate-docs'
 
-- name: 'eu.gcr.io/cloud-builders/gcloud-slim'
+- name: 'gcr.io/cloud-builders/gcloud-slim'
   entrypoint: '/bin/sh'
   args: ['deploy/scripts/gcloud-images-clear-untagged.sh', 'gcr.io/$PROJECT_ID/docs-builder']
   dir: 'lexgate-docs'
