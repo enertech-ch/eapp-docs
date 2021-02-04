@@ -65,6 +65,7 @@ Diese Struktur kann nun in Lexgate eingepflegt werden.
 
 #### Kostenstellen
 Kostenstellen können im Menüpunkt {{<lga-nav text="Kostenstellen">}} einfach mit dem Inline-Formularerfasst werden. Kostenstellen haben nur zwei Parameter:
+
 * {{<lga-lbl text="Name">}}: Ein beliebiger Name für eine Kostenstelle. Der Name sollte dem Projektumfang gerecht werden. In einem grösseren Projekt benötigen Sie unter Umständen genauere Bezeichnungen als in einem einfachen Mehrfamilienhaus. Achten Sie darauf, dass Sie die Kostenstelle anhand des Namens eindeutig identifizieren können.
 
 * {{<lga-lbl text="Korrespondierende Gruppe">}} (optional): Sie können eine Gruppe auswählen, die mit der Kostenstelle korrespondiert. Wenn Sie eine korrespondierende Gruppe auswählen, können Sie später die Funktion *Gruppenberechtigung setzen* verwenden, welche einem Vertragskontakt automatisch Zugriff auf die *Analsyse* der entsprechenden Gruppe gewährt. Dies macht also nur Sinn, wenn es sich um eine Kostenstelle handelt, welche eine Abrechung erhält.
@@ -77,7 +78,7 @@ Als nächstes erfassen Sie die Kostenverteiler auf den dazugehörigen Kostenstel
 * {{<lga-lbl text="Verhältnis">}} Standart: {{<lga-inp text="1">}} = 100%; Falls die Kosten von mehreren Parametern abhängig sind, können diese zur Berechnung mit einem Verhältnis belegt werden. Sind zum Beispiel 70% der Kosten vom gemessenen Verbrauch abhängig, setzen Sie hier {{<lga-inp text="0.7">}} ein. Sie müssen dann einen weiteren Kostenverteiler mit {{<lga-inp text="0.3">}} erstellen, welcher die restlichen 30% der Kosten verteilt, zum Beispiel wenn dies ein zugeteilter Wert aufgrund der Grundfläche ist.
 
 * {{<lga-lbl text="Art">}}:
-    * {{<lga-inp text="Zugeteilt">}}: Der Kostenanteil wird aufgrund eines statischen Werts berechnet. Geben Sie als {{<lga-lbl text="Berechnungsgrundlage">}} zum Beispiel {{<lga-inp text="25">}} {{<lga-inp text="m²">}} ein, wird zuerst eine Summe aller Werte mit dem gleichen {{<lga-inp text="Verteilschlüsselsymbol">}} gebildet, und anschliessend der Kostenanteil, welcher der aktuelle Kostenverteiler ausmacht, auf die verbrauchende Kostenstelle gebucht.
+    * {{<lga-inp text="Zugeteilt">}}: Der Kostenanteil wird aufgrund eines statischen Werts berechnet. Geben Sie als {{<lga-lbl text="Berechnungsgrundlage">}} zum Beispiel {{<lga-inp text="25">}} {{<lga-inp text="m²">}} ein, wird zuerst eine Summe aller Werte mit dem gleichen {{<lga-lbl text="Verteilschlüsselsymbol">}} gebildet, und anschliessend der Kostenanteil, welcher der aktuelle Kostenverteiler ausmacht, auf die verbrauchende Kostenstelle gebucht.
     * {{<lga-inp text="Verteilt">}}: Der Kostenanteil wird aufgrund eines Zählerwerts berechnet. Unter {{<lga-lbl text="Berechnungsgrundlage">}} können Sie eine beliebige Zählereinheit auswählen. Bei der Berechnung wird die Differenz der Zählerstände zwischen Start- und Enddatum ermittelt. Diese Differenz im Verhältnis zur Summe aller anderen Zählerstände mit der selben Einheit ergibt den Kostenanteil, der auf die verbrauchende Kostenstelle gebucht wird.
     * {{<lga-inp text="Einheitenbasiert">}}: Die Kosten werden aufgrund des hinterlegten Tarifs berechnet. Als {{<lga-lbl text="Berechnungsgrundlage">}} können Sie den Tarif einer beliebigen Zählereinheit festlegen.
 
