@@ -17,7 +17,7 @@ Unter dem Tab {{<lga-tab text="Benutzer">}} können weitere berechtigte Benutzer
 
 ### Dokumentvorlagen
 {{<notice info>}} 
-Dokumentvorlagen werden in sogenanntem [HTML-Code](https://de.wikipedia.org/wiki/Hypertext_Markup_Language) (Hypertext Markup Language) geschrieben. In dieser Anleitung wird davon ausgegangen, dass Sie Grundlegende HTML-Kentnisse beherschen. Sollte dies nicht der Fall sein, können Sie zum Erstellen und Anpassen von Vorlagen Ihren Integrator kontaktieren.
+Dokumentvorlagen werden in sogenanntem [HTML-Code](https://de.wikipedia.org/wiki/Hypertext_Markup_Language) (Hypertext Markup Language) geschrieben. In dieser Anleitung wird davon ausgegangen, dass Sie Grundlegende HTML-Kentnisse beherrschen. Sollte dies nicht der Fall sein, können Sie zum Erstellen und Anpassen von Vorlagen Ihren Integrator kontaktieren.
 {{</notice>}}
 
 #### Erstellen

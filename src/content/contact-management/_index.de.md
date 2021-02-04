@@ -36,6 +36,6 @@ Sollen hingegen nur Kontakte aus einem Adressbuch angezeigt werden, kann das Adr
 Kontakte können mit einem Klick auf den Namen bearbeitet werden.
 
 #### Benutzer zuweisen
-Einem Kontakt können Lexgate-Benutzer zugewiesen werden. Wird ein Benutzereintrag , wird dieser automatisch zu Lexgate eingeladen, falls er nicht bereits ein Login bei Lexgate besitzt.
+Einem Kontakt können Lexgate-Benutzer zugewiesen werden. Wird ein Benutzereintrag, wird dieser automatisch zu Lexgate eingeladen, falls er nicht bereits ein Login bei Lexgate besitzt.
 
 Um einem Kontakt einen Benutzer zuzuweisen, wechseln Sie auf den Tab {{<lga-tab text="Zugewiesene Benutzer">}} und geben Sie die E-Mail-Adresse des Benutzers ein. Diese Benutzerzuweisung ist sofort gültig. Der Kontakt kann nun einer Gruppe zugeteilt werden, damit der Benutzer Zugriff auf die Analyse des betreffenden Objekts erhält.

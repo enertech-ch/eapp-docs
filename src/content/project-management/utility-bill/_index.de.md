@@ -7,7 +7,7 @@ draft: false
 keywords: ["nebenkosten", "abrechnung", "erstellen", "kosten", "position", "vertrag", "verträge", "periode"]
 ---
 
-In Lexgate können Sie mit wenigen Schritten die jährliche Nebenkostenabrechnung generieren. Voraussetzung dafür ist, dass die Kostenstellen im Projekt korrekt eingerichtet sind. Weitere Informationen zum Einrichten der Kostenstellen sind [hier]({{<relref "/project-creation/accounting-structure">}}) zu finden.
+In Lexgate können Sie mit wenigen Schritten die periodischen Nebenkostenabrechnung generieren. Voraussetzung dafür ist, dass die Kostenstellen im Projekt korrekt eingerichtet sind. Weitere Informationen zum Einrichten der Kostenstellen sind [hier]({{<relref "/project-creation/accounting-structure">}}) zu finden.
 
 ### Abrechnungsperiode
 Eine Abrechnungsperiode definiert die Zeitdauer, die für eine Abrechnung berücksichtgt werden soll. Diese kann im Menüpunkt {{<lga-nav text="Abrechungsperiode">}} erstellt werden.
@@ -15,7 +15,7 @@ Eine Abrechnungsperiode definiert die Zeitdauer, die für eine Abrechnung berüc
 Sobald eine Abrechnungsperiode für eine Nebenkostenabrechnung verwendet wurde, kann diese nicht mehr verändert werden.
 
 ### Kostenpositionen
-Als nächstes muss Lexgate Wissen, welche Kosten es für die Abrechnung berücksichtigen soll. Dazu können Sie Rechnungen unter {{<lga-nav text="Kostenpositionen">}} auf eine Kostenstelle buchen:
+Als nächstes muss Lexgate wissen, welche Kosten es für die Abrechnung berücksichtigen soll. Dazu können Sie Rechnungen unter {{<lga-nav text="Kostenpositionen">}} auf eine Kostenstelle buchen:
 * {{<lga-lbl text="Titel">}}: Ein frei wählbarer Titel für die Rechnung.
 * {{<lga-lbl text="Datum">}}: Das Datum der Rechnung (für Lexgate irrelevant).
 * {{<lga-lbl text="Betrag">}}: Der Rechnungsbetrag; falls es sich um eine Gutschrift handelt, geben Sie den Betrag mit einem Minus davor ein ({{<lga-inp text="-25.50">}}).
@@ -23,7 +23,7 @@ Als nächstes muss Lexgate Wissen, welche Kosten es für die Abrechnung berücks
 * {{<lga-lbl text="Abrechnungsperiode">}}: Die Abrechnungsperiode, in welcher der Betrag verteilt werden soll.
 
 ### Verträge
-Für Kostenstellen, welche Abrechnugen erhalten sollen, können Sie Verträge hinterlegen. Das erspart ihnen die wiederkehrende Eingabe von Hand beim generieren der Abrechnung.
+Für Kostenstellen, welche Abrechnungen erhalten sollen, können Sie Verträge hinterlegen. Das erspart ihnen die wiederkehrende Eingabe von Hand beim generieren der Abrechnung.
 
 * {{<lga-lbl text="Beginn">}}: Der Tag, ab dem ein Vertrag gültig ist.
 * {{<lga-lbl text="Ende">}}: Der Tag, an dem der Vertrag ausläuft. Normalerweise der Vortag zum Beginn des nachfolgenden Vertrags. Kann auch leer gelassen werden, falls der Vertrag auf unbestimmte Zeit läuft.

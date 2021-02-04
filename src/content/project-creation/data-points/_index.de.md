@@ -6,15 +6,14 @@ weight: 1002
 draft: false
 keywords: ["datenpunkt", "gruppe", "gruppen", "tarif", "tarife", "zähler", "zählereinheit","zählereinheiten"]
 ---
-Sobald Ihr Lexgate-Projekt erfolgreich Übertragungen empfängt, können Sie damit beginnen, Ihre Datenpunkte einzurichten.
 
+Sobald Ihr Lexgate-Projekt erfolgreich Übertragungen empfängt, können Sie damit beginnen, Ihre Datenpunkte einzurichten.
 
 ### Logische Struktur
 Gruppen und Zähler sollen die logische Struktur der Liegenschaft abbilden. Diese soll grösstenteils der physikalischen Struktur entsprechen, aber in einigen Sonderfällen kann es auch Sinn machen, leicht von dieser abzuweichen.
 
-
 #### Gruppen
-Eine Gruppe stellt eine Sammlung von anderen Gruppen und Zählern dar. Das einfachste Beispiel für eine Gruppe ist eine Wohnung. Eine Wohnung beinhaltet in der Regel mehrere Zähler. Der Gruppe "Wohnung" übergeordnet könnte eine weitere Gruppe "Gebäude" sein.
+Eine Gruppe stellt eine Sammlung von anderen Gruppen und Zählern dar. Das einfachste Beispiel, was eine eine Gruppe representieren kann, ist eine Wohnung. Eine Wohnung beinhaltet in der Regel mehrere Zähler. Der Gruppe "Wohnung" übergeordnet könnte eine weitere Gruppe "Gebäude" sein.
 
 Eine Gruppenstruktur für eine einfache Liegenschaft könnte also wie folgt aussehen:
 {{<lga-struct type="group" name="Liegenschaft Musterstrasse">}}
@@ -48,10 +47,8 @@ Die physikalischen Messeinrichtungen im Objekt werden in Lexgate als Zähler bez
     {{</lga-struct>}}
 {{</lga-struct>}}
 
-
 ### Zählereinheiten
 Zählereinheiten verbinden Datenerfassung und Struktur. Für jede zu messende Einheit muss eine Zählereinheit erstellt werden und dem Zähler zugeordnet werden. Mit einem definierbaren Filter werden die Werte jeweils aus der Übertragung exportiert. Diese exportieren Werte werden in Lexgate Aufzeichnungen genannt.
-
 
 #### Struktur
 Für die Struktur werden Zählereinheiten mit einem passenden Namen versehen, zum Beispiel:
@@ -68,34 +65,31 @@ Für die Struktur werden Zählereinheiten mit einem passenden Namen versehen, zu
     {{</lga-struct>}}
 {{</lga-struct>}}
 
-
 #### Datenquelle
 Bei Zählereinheiten muss die Datenquelle angegeben werden. Diese wird mit mehrerer Parametern konfiguriert:
 
 * {{<lga-lbl text="Quelle">}}: Die Quelle, aus der die Übertragungen gefiltert werden sollen.
 
 * {{<lga-lbl text="Filtertyp Quelle">}}: Als Filtertypen stehen drei Einstellungen zur Verfügung:
-    * JsonPath: für Übertragungen im JSON-Format 
-    * XPath: für Übertragungen im XML-Format
-    * Regex: Nur für Experten. Erlaubt das Filtern mittels [Regular Expression](https://de.wikipedia.org/wiki/Regul%C3%A4rer_Ausdruck).
+    * {{<lga-inp text="JsonPath">}}: für Übertragungen im JSON-Format 
+    * {{<lga-inp text="XPath">}}: für Übertragungen im XML-Format
+    * {{<lga-inp text="Regex">}}: Nur für Experten. Erlaubt das Filtern mittels [Regular Expression](https://de.wikipedia.org/wiki/Regul%C3%A4rer_Ausdruck).
 
-* {{<lga-lbl text="Filterstring Quelle">}}: Der anzuwendene Filterstring. Siehe Beispiele für [JsonPath]() und [XPath]()
+* {{<lga-lbl text="Filterstring Quelle">}}: Der anzuwendene Filterstring. Siehe Beispiele für [JsonPath](#todo) und [XPath](#todo).
 
 Als nächstes muss konfiguriert werden, in welcher Einheit die eingehenden Daten skaliert sind. Diese Skalierung muss derjenigen entsprechen, die später für die Abrechnung verwendet werden soll. Im Optimalfall schickt der Gateway die Daten bereits korrekt skaliert; sollte dies nicht der Fall sein, muss der Normalisierungsfaktor entsprechend angepasst werden.
 
 * {{<lga-lbl text="Symbol">}}: Das Einheitssymbol der übermittelten Zählereinheit, zum Beispiel {{<lga-inp text="kWh">}} oder {{<lga-inp text="m³/h">}}.
-
-* {{<lga-lbl text="Symbolname">}}: Der ausgeschriebene Name des Einheitssymbols, zum Beispiel {{<lga-inp text="Kilowattstunden">}} oder {{<lga-inp text="Kubikmeter">}}.
-
+* {{<lga-lbl text="Symbolname">}}: Der ausgeschriebene Name des Einheitssymbols, zum Beispiel {{<lga-inp text="Kilowattstunden">}} oder {{<lga-inp text="Kubikmeter pro Stunde">}}.
 * {{<lga-lbl text="Normalisierungsfaktor">}}: Der Faktor, welcher auf den in der Übertragung gefundenen Wert angewandt wird, bevor dieser in der Datenbank abgelegt wird. Falls der Gateway zum Beispiel den Wasserbrauch in Litern verschickt, Sie diesen aber in Kubikmetern abrechnen möchten, geben Sie hier {{<lga-inp text="0.001">}} ein.
-
 * {{<lga-lbl text="Wird überwacht">}}: Einstellung, ob die Zählereinheit im Health-Check berücksichtigt werden soll.
-
 
 #### Darstellung
 In der Analyse werden die aufgezeichneten Zählerdaten angezeigt. Möglicherweise entspricht die Skalierung der Aufzeichnung aber nicht der gewünschten Skalierung für die Darstellung. Deshalb kann nun eine Skalierung für die Darstellung auf der Plattform gesetzt werden. Abrechnungsrelevante Funktionen ignorieren diese Einstellung.
 
-* {{<lga-lbl text="Werttyp">}} {{<lga-inp text="Akkumuliert">}}: Die Standarteinstellung für Zähler. In den Diagrammen werden Differenzen angezeigt (Energiebezug, Wasserbezug). {{<lga-inp text="Absolut">}}: In den Diagrammen werden die absoluten Werte angezeigt (Temperaturen, Durchfluss).
+* {{<lga-lbl text="Werttyp">}}:
+    * {{<lga-inp text="Akkumuliert">}}: Die Standarteinstellung für Zähler. In den Diagrammen werden Differenzen angezeigt (Energiebezug, Wasserbezug). 
+    * {{<lga-inp text="Absolut">}}: In den Diagrammen werden die absoluten Werte angezeigt (Temperaturen, Durchfluss).
 
 * {{<lga-lbl text="Anzeigesymbol">}}: Das Einheitssymbol nach Anwendung des Anzeigefaktors.
 
@@ -119,9 +113,8 @@ Erstellen Sie zuerst einen oder mehrere Tarife unter dem Menüpunkt {{<lga-nav t
 
 Erfassen Sie dann eine Zählereinheit wie oben beschrieben. Wechseln Sie nach der Erstellung der Zählereinheit auf den Tab {{<lga-tab text="Tarife">}}. Wählen Sie nun einen {{<lga-lbl text="Tarif">}} aus und konfigurieren Sie den dazugehörigen Filter. Wiederholen Sie dies für jeden Tarif, welcher bei der ausgewählten Zählereinheit aufgezeichnet werden soll.
 
-
 #### Aufzeichnungen
-Sobald eine Zählereinheit erstellt ist, wird deren Filter auf jede neu eintreffende Übertragung angewandt. Auf der Detailansicht der Zählereinheit finden Sie den Tab {{<lga-tab text="Zählereinheiten">}}, in welcher Sie eine Liste mit allen aufgezeichneten Werten finden.
+Sobald eine Zählereinheit erstellt ist, wird deren Filter auf jede neu eintreffende Übertragung angewandt. Auf der Detailansicht der Zählereinheit finden Sie den Tab {{<lga-tab text="Aufzeichnungen">}}, in welcher Sie eine Liste mit allen aufgezeichneten Werten finden.
 
 Falls Sie Werte aus Übertragungen, die bereits vor der Erstellung der Einheit eingengangen sind, ebenfalls benötigen, können Sie Lexgate anweisen, für die entsprechenden Einheiten die Übertragungen erneut zu verarbeiten. Klicken Sie dazu in der Projektnavigation auf {{<lga-nav text="Zählereinheiten">}}, wählen Sie die erneut zu verarbeitenden Zählereinheiten an und klicken Sie auf {{<lga-btn type="negative" icon="update" text="Übertragungen erneut verarbeiten">}}.
 

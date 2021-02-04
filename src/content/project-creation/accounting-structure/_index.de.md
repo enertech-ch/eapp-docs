@@ -14,13 +14,13 @@ Wenn Sie Daten von Ihren Zählern erhalten, können Sie diese nutzen, um automat
 
 Eine **Kostenstelle** kann:
 * andere Kostenstellen versorgen (*Elektrizität*)
-* von anderen Kostenstellen verbrauchen (*Allgemein*, *Wohung 1*, *Wohnung 2*)
+* von anderen Kostenstellen verbrauchen (*Allgemein*, *Wohnung 1*, *Wohnung 2*)
 * beides (*Wärmeerzeugung*, *Heizung*, *Warmwasser*)
 
 Zur Verknüpfung zwischen Kostenstellen werden **Kostenverteiler** eingesetzt. Kostenverteiler können:
 * Kosten aufgrund eines Tarifs zuteilen, welcher einer Zählereinheit zugeordnet ist (Kostenverteiler - Art: Einheitenbasiert).
 Im obigen Beispiel: den verbauchenden Kostenstellen von *Elektrizität* wird ein fester Tarif pro kWh verrechnet.
-* Kosten aufgrund des relativen Verbrauchs im Verhältnis zu anderen Zählereinheiten verteilen (Kostenverteiler Art: Verteilt).
+* Kosten aufgrund des relativen Verbrauchs im Verhältnis zu anderen Zählereinheiten verteilen (Kostenverteiler - Art: Verteilt).
 Im obigen Beispiel: den verbrauchenden Kostenstellen von *Heizung* werden die Kosten im Verhältnis des gemessenen Verbrauchs verrechnet.
 * Kosten aufgrund eines fest zugewiesenen Anteils verteilen (Kostenverteiler -  Art: Zugeteilt).
 Im obigen Beispiel: den verbrauchenden Kostenstellen von *Wärmeerzeugung* werden die Kosten im festen Verhältnis 70% Heizung/30% Warmwasser verrechnet.
@@ -53,9 +53,9 @@ Ergänzen Sie dann auf dieser Liste, in welchem Verhältnis und mit welcher Zute
 | "              | 0.3        | Zugeteilt       | 35m2                                                                                     | "                          |
 | "              | 0.7        | Verteilt        | {{<tooltip text="Zählereinheit">}}Wohnung 2 > Heizung > Energiebezug{{</tooltip>}}       | Wohnung 2                  |
 | "              | 0.3        | Zugeteilt       | 65m2                                                                                     | "                          |
-| Warmwasser     | 0.7        | Verteilt        | {{<tooltip text="Zählereinheit">}}Wohung 1 > Warmwasser > Wasserbezug{{</tooltip>}}      | Wohung 1                   |
+| Warmwasser     | 0.7        | Verteilt        | {{<tooltip text="Zählereinheit">}}Wohung 1 > Warmwasser > Wasserbezug{{</tooltip>}}      | Wohnung 1                  |
 | "              | 0.3        | Zugeteilt       | 35m2                                                                                     | "                          |
-| "              | 0.7        | Verteilt        | {{<tooltip text="Zählereinheit">}}Wohnung 2 > Warmwasser > Wasserbezug{{</tooltip>}}     | Wohung 2                   |
+| "              | 0.7        | Verteilt        | {{<tooltip text="Zählereinheit">}}Wohnung 2 > Warmwasser > Wasserbezug{{</tooltip>}}     | Wohnung 2                  |
 | "              | 0.3        | Zugeteilt       | 65m2                                                                                     | "                          |
 | ~~Allgemein~~  |            |                 |                                                                                          | ~~keine~~                  |
 | ~~Wohnung 1~~  |            |                 |                                                                                          | ~~keine~~                  |
