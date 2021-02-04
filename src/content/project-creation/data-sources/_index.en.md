@@ -92,7 +92,7 @@ Add a Source Adapter with the {{<lga-lbl text="Type">}} {{<lga-inp text="generic
 
 Accumulators expect a POST request to the endpoint `https://api.lexgate.ch/v1/source-adapters/{authentication-id}`. Lexgate applies the configured filters on the content. If the filter matches a value, the {{<lga-lbl text="Tag">}}-values is increased by the matched value.
 
-Filter patterns similar to the ones for Meter Units, which are explained in detail [here](#todo).
+Filter patterns similar to the ones for Meter Units, which are explained in detail [here]({{<relref "../data-points#data-source">}}).
 
 #### Configure Zaptec EV Charger
 Add a Source Adapter with the {{<lga-lbl text="Type">}} {{<lga-inp text="generic-accumulator">}}. Update the configuration in the Zaptec Portal > Your Installation > Settings > Authentication like this:

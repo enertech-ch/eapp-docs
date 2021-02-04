@@ -71,7 +71,7 @@ For Meter Units it's required to configure a Data Source. It gets configured wit
     * {{<lga-inp text="JsonPath">}}: for Transmission in JSON format
     * {{<lga-inp text="XPath">}}: for Transmission in XML format
     * {{<lga-inp text="Regex">}}: Expers only. Filters with [Regular Expression](https://en.wikipedia.org/wiki/Regular_expression)
-* {{<lga-lbl text="Source Filter path">}}: The filter string to apply. Check the examples for [JsonPath](#todo) and [XPath](#todo).
+* {{<lga-lbl text="Source Filter path">}}: The filter string to apply. Check the examples for [JsonPath]({{<relref "./filterstrings">}}) and [XPath]({{<relref "./filterstrings">}}).
 
 It's also necessary to configure the scale of the incoming data. The scale must match the one that is used for Accounting later on. It's best if the gateway already sends the data in the correct scale; but if that's not possible, the Normalization Factor must be adjusted accordingly:
 * {{<lga-lbl text="Symbol">}}: The unit symbol of the transmitted unit, for example {{<lga-inp text="kWh">}} or {{<lga-inp text="m³/h">}}.

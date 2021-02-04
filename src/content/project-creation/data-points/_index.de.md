@@ -75,7 +75,7 @@ Bei Zählereinheiten muss die Datenquelle angegeben werden. Diese wird mit mehre
     * {{<lga-inp text="XPath">}}: für Übertragungen im XML-Format
     * {{<lga-inp text="Regex">}}: Nur für Experten. Erlaubt das Filtern mittels [Regular Expression](https://de.wikipedia.org/wiki/Regul%C3%A4rer_Ausdruck).
 
-* {{<lga-lbl text="Filterstring Quelle">}}: Der anzuwendene Filterstring. Siehe Beispiele für [JsonPath](#todo) und [XPath](#todo).
+* {{<lga-lbl text="Filterstring Quelle">}}: Der anzuwendene Filterstring. Siehe Beispiele für [JsonPath]({{<relref "./filterstrings">}}) und [XPath]({{<relref "./filterstrings">}}).
 
 Als nächstes muss konfiguriert werden, in welcher Einheit die eingehenden Daten skaliert sind. Diese Skalierung muss derjenigen entsprechen, die später für die Abrechnung verwendet werden soll. Im Optimalfall schickt der Gateway die Daten bereits korrekt skaliert; sollte dies nicht der Fall sein, muss der Normalisierungsfaktor entsprechend angepasst werden.
 
