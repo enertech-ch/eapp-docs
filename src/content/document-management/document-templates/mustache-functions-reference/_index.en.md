@@ -6,7 +6,7 @@ weight: 0299
 draft: false
 keywords: ["function", "reference", "mustache"]
 ---
-
+ 
 ## Functions  
  [tran](#tran): translates a key  
  [count](#count): count number of items in a loopable object  
@@ -32,7 +32,7 @@ Translate a key depending on the document language.
 ```html  
 {{#fn_tr}}Date{{/fn_tr}}  
 {{#fn_tr}}Invoice{{/fn_tr}}  
-{{#fn}}<translate key="Date">{{#fn}}  
+{{#fn}}<translate key="Date">{{#fn}}
 ```  
   
 ### input  
@@ -181,7 +181,7 @@ Does not change the number format; used as default.
 |--|--|--|--|--|  
 |format-precision|`min` or `min-max`|yes|`2` or `2,4`|  
 |format-currency|a code or a currency-field||`EUR` or `doc_currency`  
-|format-symbol|string|yes|` `(no symbol), `euro` or `â‚¬`|  
+|format-symbol|string|yes|` `(no symbol), `euro` or `€`|  
   
   
 ```html  
@@ -233,8 +233,9 @@ All parameters except type are renderable with Mustache template syntax and use 
 |debtor-addressline-2|Debtor Address Second Line|yes|`{{Document.receiver.address_zip}} {{Document.receiver.address_town}}`|  
 |debtor-country|Debtor Country|yes|`{{Document.creditor.name}}`|  
 |payment-amount|Payment Amount|yes|`{{BalanceOutstanding}}`|  
-|payment-currency|Payment Currency|yes|`{{CurrencySymbol}}`|  
-|reference-number|Reference Number|yes|`{{Document.id}}`|  
+|payment-currency|Payment Currency|yes|`{{CurrencySymbol}}`|
+|reference-type|Reference Type. Allowed are `SCOR` and `NON`|yes|`SCOR`|
+|reference|Reference String|yes|`{{Document.id}}`|  
   
 #### Examples  
 ```html  
