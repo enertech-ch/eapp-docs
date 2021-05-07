@@ -36,3 +36,9 @@ JsonPath: `$..*[?(@.Serial=='123456')].ValueDescs[?(@.DescriptionStr=='Energy' a
 * Einheit mit der Seriennummer *123456*
 * Wert von *Energie* mit dem Tarif *1*
 
+#### Enertech RFID Universal Meter
+
+JsonPath: `$[?(@.tag=='token#TokenName')].value`
+
+* Einheit mit dem Tag *TokenName*
+* Wert von *Energie* mit dem Tarif *1*
