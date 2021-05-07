@@ -1,7 +1,7 @@
 ---
 title: "Datenquellen konfigurieren"
 date: 2020-01-26T13:00:00
-lastmod: 2020-01-26T13:00:00
+lastmod: 2021-05-07T14:24:00
 weight: 1001
 draft: false
 keywords: ["datenpunkt", "quelle", "quellen", "gateway", "quellenadapter", "übertragung", "übertragungen"]
@@ -85,7 +85,8 @@ Tragen Sie auf Ihrem Client als FTP-Server `ftp.lexgate.ch` ein. Die Logindaten 
 ### Quellenadapter
 Quellenadapter erlauben es, Geräte in Lexgate einzubinden, die eine serverseitige Logik erwarten. Zur Zeit stehen die folgenden Quellenadapter zur Verfügung:
 * Akkumulierer: summiert eingehende Differenzwerte auf einen Zähler
-* Zaptec Ladestation: Authorisierung und akkumulierung einer Ladestation von [Zaptec](https://novavolt.ch/ladesysteme-von-zaptec/)
+* Session-Akkumulierer *ALPHA*: Autorisierung und akkumulierung mit einem einfachen Session-Protokoll.
+* Zaptec Ladestation: Autorisierung und akkumulierung einer Ladestation von [Zaptec](https://novavolt.ch/ladesysteme-von-zaptec/)
 
 Quellenadapter verarbeiten eingehende Anfragen und antworten darauf gemäss Herstellerprotokoll. Bei der Verarbeitung werden Zustände erzeugt oder aktualisiert, welche einen Zählerstand wiedergeben.
 
@@ -97,6 +98,43 @@ Fügen Sie einen neuen Quellenadapter mit einem beliebigen Namen und dem {{<lga-
 Akkumulierer erwarten eine POST-Anfrage an den Endpunkt `https://api.lexgate.ch/v1/source-adapters/{authentifizierungs-id}`. Auf den Inhalt der Anfrage werden anschliessend die konfigurierten Filter angewandt. Findet der Filter einen Treffer, wird der {{<lga-lbl text="Tag">}}-Wert um den gefunden Wert erhöht.
 
 Die Filtermuster sind gleich wie diejenigen für Zählereinheiten, welche [hier]({{<relref "../data-points#datenquelle">}}) detailiert erklärt werden.
+
+#### Session-Akkumulierer konfigurieren
+{{<notice info>}}
+Session-Akkumulierer befinden sich zurzeit im ALPHA-Stadium und können jederzeit ohne Vorwarnung angepasst werden.
+{{</notice>}}
+
+Fügen Sie einen neuen Quellenadapter mit einem beliebigen Namen und dem {{<lga-lbl text="Typ">}} {{<lga-inp text="generic-session-accumulator">}} hinzu.
+
+In der *ALPHA*-phase kann diese Art von Quellenadapter nur über die JSON-Konfiguration konfiguriert werden. Wechseln
+Sie dazu zum Tab {{<lga-tab text="JSON">}}. Die Konfiguration verwendet folgendes Schema:
+```json
+{
+  "tokens": [
+    {
+      "tag": "My token",
+      "token": "904A0C13",
+      "notices": ""
+    }
+  ],
+  "devices": [
+    {
+      "tag": "My Device",
+      "id": "my.device.id",
+      "tokens": [
+        "My token"
+      ],
+      "notices": ""
+    }
+  ]
+}
+```
+
+* Zum Starten einer Session erwartet der Session-Akkumulierer eine POST-Anfrage an folgenden Endpunkt: `https://api.lexgate.ch/v1/source-adapters/{authentifizierungs-id}/start`
+* Während der Session können die Werte nachgeführt werden, damit der Verbrauch korrekt über die Zeit aufgezeichnet werden kann. Dazu empfängt der Session-Akkumulierer eine POST-Anfrage an: `https://api.lexgate.ch/v1/source-adapters/{authentifizierungs-id}/update`
+* Zum Abschliessen der Session erwartet der Session-Akkumulierer eine POST-Anfrage an folgenden Endpunkt: `https://api.lexgate.ch/v1/source-adapters/{authentifizierungs-id}/end`
+
+Das Protokoll ist [hier]({{< relref path="./generic-session-accumulator" lang="en" >}}) (englisch) ausführlich beschrieben.
 
 #### Zaptec Ladestation konfigurieren
 Fügen Sie einen neuen Quellenadapter mit einem beliebigen Namen und dem {{<lga-lbl text="Typ">}} {{<lga-inp text="zaptec-ev-charger">}} hinzu. Setzen Sie im Zaptec Portal unter Installationen > Ihre Installation > Einstellungen > Authentifizierung folgende Konfiguration:

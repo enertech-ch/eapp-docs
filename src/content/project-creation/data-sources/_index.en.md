@@ -1,7 +1,7 @@
 ---
 title: "Configure Data Sources"
 date: 2020-02-03T13:00:00
-lastmod: 2020-02-03T13:00:00
+lastmod: 2021-05-07T14:24:00
 weight: 1001
 draft: false
 keywords: ["data", "datapoint", "source", "sources", "gateway", "source", "adapter", "transmission", "transmissions"]
@@ -81,6 +81,7 @@ Use the credentials from the Source's {{<lga-lbl text="notices">}} to connect to
 ### Source Adapters
 Source Adapters allow to use devices, which require server side logic. Lexgate has this Source Adapters implemented:
 * Accumulator: sums up difference values to a counter.
+* Session Accumulator *ALPHA*: Authorization and accumulation with a simple session protocol.
 * Zaptec EV Charger: Authorization and accumulation of charging stations from [Zaptec](https://zaptec.com/en/).
 
 Source Adapters process incoming requests and send a reponse according to the manufacturers protocol. During the processing, internal states are created or updated, to simulate a meter.
@@ -93,6 +94,44 @@ Add a Source Adapter with the {{<lga-lbl text="Type">}} {{<lga-inp text="generic
 Accumulators expect a POST request to the endpoint `https://api.lexgate.ch/v1/source-adapters/{authentication-id}`. Lexgate applies the configured filters on the content. If the filter matches a value, the {{<lga-lbl text="Tag">}}-values is increased by the matched value.
 
 Filter patterns similar to the ones for Meter Units, which are explained in detail [here]({{<relref "../data-points#data-source">}}).
+
+#### Configure a Session Accumulator
+{{<notice info>}}
+Session Accumulators are currently in ALPHA-phase and can be changed at any time.
+{{</notice>}}
+
+Add a Source Adapter with the {{<lga-lbl text="Type">}} {{<lga-inp text="generic-session-accumulator">}}.
+
+During *ALPHA*-phase, this type of Source Adapter can be configured via JSON-configuration only. 
+Change to the tab {{<lga-tab text="JSON">}} for this. The configuration follows this schema:
+```json
+{
+  "tokens": [
+    {
+      "tag": "My token",
+      "token": "904A0C13",
+      "notices": ""
+    }
+  ],
+  "devices": [
+    {
+      "tag": "My Device",
+      "id": "my.device.id",
+      "tokens": [
+        "My token"
+      ],
+      "notices": ""
+    }
+  ]
+}
+```
+
+*
+* To start a session, the Session Accumulator expects a POST-Request to this endpoint: `https://api.lexgate.ch/v1/source-adapters/{authentication-id}/start`
+* It's possible to update values during to session, to track consumption over time. The Session Accumulator accepts POST-Requests to this update-endpoint: `https://api.lexgate.ch/v1/source-adapters/{authentication-id}/update`
+* To end a session, the Session Accumulator expects a POST-Request to this endpoint: `https://api.lexgate.ch/v1/source-adapters/{authentifizierungs-id}/end`
+
+The protocol is described [here]({{< relref path="./generic-session-accumulator" >}}).
 
 #### Configure Zaptec EV Charger
 Add a Source Adapter with the {{<lga-lbl text="Type">}} {{<lga-inp text="generic-accumulator">}}. Update the configuration in the Zaptec Portal > Your Installation > Settings > Authentication like this:
