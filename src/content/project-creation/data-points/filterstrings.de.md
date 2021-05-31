@@ -1,7 +1,7 @@
 ---
 title: "Filter String Beispiele"
 date: 2020-02-04T13:00:00
-lastmod: 2020-02-04T13:00:00
+lastmod: 2021-05-07T14:14:00
 weight: 10021
 draft: false
 keywords: ["filter", "string", "beispiel", "zähler", "einheit"]
@@ -28,6 +28,11 @@ XPath: `//Data[@attr='ID']/value[text()=123456]/../../Data[contains(@attr, 'Flow
 JsonPath: `$.data[?(@.meter_id=='2.123')].energy_t1_kWh`
 * Einheit mit der ID *2.123*
 * Wert von *Energie* mit dem Tarif *1*
+
+#### Lexgate Source Adapter
+
+JsonPath: `$[?(@.tag=='token#YourTokenTag:OptionalNestedId')].value`
+* Wert des Zustands mit dem Tag *token#YourTokenTag:OptionalNestedId*
 
 #### EMU M-Bus Center
 
