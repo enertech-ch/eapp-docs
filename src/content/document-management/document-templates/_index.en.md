@@ -1,7 +1,7 @@
 ---
 title: "Document Templates"
 date: 2020-01-03T13:00:00
-lastmod: 2020-02-03T13:00:00
+lastmod: 2021-09-16T13:21:00
 weight: 0202
 draft: false
 keywords: ["templates", "document"]
@@ -25,16 +25,16 @@ If you do not, you can contact your Integrator to create and change Templates.
 A new Document Template can be created with the Button {{<lga-btn type="negative" icon="add" text="Add">}}.
 
 #### Content
-The content is defined as HTML code. [Mustache](https://mustache.github.io/) is used as template engine. Mustache fills the content to the Template. The Content depends on the Documents Type. You should adapt one of the default templates rather than create a fresh one.
+The content is defined as HTML code. [Handlebars](https://handlebarsjs.com/guide/) is used as template engine. Handlebars fills the content to the Template. The available content depends on the Documents Type. You should adapt one of the default templates rather than create a fresh one.
 
-With Mustache it's possible to yell varaibles and iterate over objects. Additionally, we added some Lexgate specific functions. You can find the detailed specification here: [Mustache Funktionsreferenz]({{<relref "/document-management/document-templates/mustache-functions-reference">}})
+To learn how to work with the Template Engine, check the [Handlebars Reference]({{<relref "/document-management/document-templates/handlebars-reference">}}).
 
 #### Localization
 Templates have support for multiple languages, which is provided by a Mustache-function. You can create a translatable string like this:
 
 * In the Template content call the localization function with the localization key, for example:
-```html
-{{#fn}}<translate key="Date">{{#fn}}  
+```handlebars
+{{translate "Date"}}  
 ```
 
 * The key is detected and listed in {{<lga-tab text="Localization">}}. You can add the translation for the required languages.

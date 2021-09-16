@@ -2,7 +2,11 @@
 
 ## Installation
 
-To run dev server inside Docker container
+After cloning the repo, make sure you also install the submodules (the theme is a submodule) by running:
+
+    git submodule update --init --recursive
+
+To start the dev server inside Docker container
 
     bash ldo up
     
