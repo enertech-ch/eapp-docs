@@ -1,7 +1,7 @@
 ---
 title: "Dokumentvorlagen"
 date: 2020-01-02T13:00:00
-lastmod: 2020-02-02T13:00:00
+lastmod: 2021-09-16T13:21:00
 weight: 0202
 draft: false
 keywords: ["templates", "dokument", "vorlagen"]
@@ -24,17 +24,16 @@ Dokumentvorlagen werden in sogenanntem [HTML-Code](https://de.wikipedia.org/wiki
 Eine neue Dokumentvorlage kann mit dem Button {{<lga-btn type="negative" icon="add" text="Hinzufügen">}} angelegt werden.
 
 #### Inhalt
-Der Inhalt einer Vorlage wird in HTML erstellt. Als Template Engine wird [Mustache](https://mustache.github.io/) verwendet. Mustache füllt den eigentlichen Inhalt in die erstellte Vorlage ab. Der Inhalt hängt von der Dokumentart ab. Es ist stark zu empfehlen, dass Sie sich beim Erstellen einer Vorlage an den vorgegeben Standartvorlagen orientieren.
+Der Inhalt einer Vorlage wird in HTML erstellt. Als Template Engine wird [Handlebars](https://handlebarsjs.com/guide/) verwendet. Handlebars füllt den eigentlichen Inhalt in die erstellte Vorlage ab. Der Inhalt hängt von der Dokumentart ab. Es wird empfohlen, dass Sie sich beim Erstellen einer Vorlage an den vorgegeben Standartvorlagen orientieren.
 
-Dank Mustache können in Dokumenten Variablen ausgegeben sowie über Objekte iteriert werden. Zusätzlich wird mit die Syntax mit einigen Lexgate-spezifischen Funktionen ergänzt. Die detailierte Spezifikation ist hier zu finden:
-[Mustache Funktionsreferenz]({{<relref "/document-management/document-templates/mustache-functions-reference">}})
+Um zu lernen, wie Sie mit der Template Engine arbeiten können, sehen Sie sich die [Mustache Funktionsreferenz (en)]({{<relref "/document-management/document-templates/handlebars-reference">}}) an.
 
 #### Lokalisierung
 Vorlagen unterstützen Mehrsprachigkeit mit einer Mustache-Funktion. Dies funktioniert wie folgt:
 
 * Im Inhalt wird ein Aufruf zur Lokalisierungsfunktion mit dem lokalisierenden Schlüssel gemacht, zum Beispiel:
-```html
-{{#fn}}<translate key="Date">{{#fn}}  
+```handlebars
+{{translate "Date"}}  
 ```
 
 * Der Schlüssel wird erkannt und im Tab {{<lga-tab text="Lokalisierung">}} aufgeführt. Für die benötigen Sprachen kann nun eine Übersetzung hinzugefügt werden.
