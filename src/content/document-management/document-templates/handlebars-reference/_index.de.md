@@ -1,7 +1,7 @@
 ---
 title: "Handlebars Referenz"
 date: 2020-01-02T13:00:00
-lastmod: 2021-09-16T08:33:00
+lastmod: 2021-09-20T17:09:00
 weight: 0299
 draft: false
 keywords: ["function", "reference", "mustache"]
@@ -114,6 +114,7 @@ To count items in a list, you can use the `length`-attribute:
   [datetime](#datetime): display a field containing a date in a specified format  
   [number](#number): display a field containing a number in a specified format  
   [calculate](#calculate): display a custom calculated value  
+  [set-variable](#set-variable): set the value of a context variable  
   [payment-slip](#payment-slip): display a payment slip block  
 
 ### translate  
@@ -248,13 +249,29 @@ Note: The Output of a calculations is always a raw number. They can be formatted
 |( ) | Parenthesis|`2*(3+4)` = `14`
 |pi|Math Constant pi|`pi` = `3.14...`
 
+### set-variable
+Set or update the value with the given name. This function can be used to store and reuse results of calculations or formatters.
+
+#### Parameters
+|parameter|content|optional|examples  
+|--|--|--|--|
+|*content*|numeric or string||`12` or `-3`
+|**1**|string||`Sum` or `Difference`|
+|quiet|bool|yes, default `false`|`true` or `false`
+
+#### Examples
+```handlebars
+{{#set-variable "MyConstant"}}13{{/set-variable}}
+{{#set-variable "Sum" quiet=true}}{{#calculate }}20+8{{/calculate}}{{/set-variable}}
+```
+
 ### payment-slip  
 Displays a field containing a dynamic value, optionally in a specified format.  
 All parameters except type are renderable with Mustache template syntax and use document variables.   
   
 #### Parameters  
 |parameter|content|optional|default  
-|--|--|--|--|--|  
+|--|--|--|--|   
 |**1**|Payment slip type||`ch-qr` - only Swiss QR bill is available for now|  
 |creditor-name|Creditor Name|yes|`{{Document.creditor.name}}`|  
 |creditor-addressline-1|Creditor Address First Line|yes|`{{Document.creditor.address}}`|  
