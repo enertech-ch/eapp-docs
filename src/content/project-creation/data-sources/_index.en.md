@@ -16,7 +16,7 @@ Lexgate does not support unencrypted HTTP requests. All requests must be encrypt
 
 #### Create and test a HTTP source
 Create a new Source by entering a name, selecting the {{<lga-lbl text="Type">}} {{<lga-inp text="http">}} and clicking {{<lga-btn type="negative" icon="add">}}. When the source is created, click on it's name to show more details for this source. The input {{<lga-lbl text="Notices">}} contains the URL of the endpoint, which looks like this:
-`https://api.lexgate-stage.ch/v1/sources/{authentication-id}`
+`https://api.lexgate.ch/v1/sources/{authentication-id}`
 
 The simplest method to check a source is by sending data from your browser. For this, modify the `{authentication-id}` in this example and call it in your browser:
 
