@@ -17,7 +17,7 @@ Lexgate unterstützt keine unverschlüsselten HTTP-Anfragen. Alle Anfragen müss
 
 #### Eine HTTP-Quelle erstellen und testen
 Fügen Sie eine neue Quelle mit einem beliebigen Namen und der {{<lga-lbl text="Art">}} {{<lga-inp text="http">}} hinzu. Wenn die Quelle erstellt ist, klicken Sie auf den Namen um Detailseite der Quelle anzuzeigen. Im {{<lga-lbl text="Hinweise">}}-Feld finden Sie die URL des Endpunkt, die wie folgt aussieht:  
-`https://api.lexgate-stage.ch/v1/sources/{authentifizierungs-id}`
+`https://api.lexgate.ch/v1/sources/{authentifizierungs-id}`
 
 Die einfachste Möglichkeit, eine Quelle zu testen, besteht darin, eine Anfrage durch Ihren Browser zu senden. Ergänzen Sie im folgendes Beispiel die `{authentifizierungs-id}` und rufen Sie die URL in ihrem Browser auf.
 
