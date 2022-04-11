@@ -1,7 +1,7 @@
 ---
 title: "Filter String Beispiele"
 date: 2020-02-04T13:00:00
-lastmod: 2021-05-07T14:14:00
+lastmod: 2022-02-01T12:00:00
 weight: 10021
 draft: false
 keywords: ["filter", "string", "beispiel", "zähler", "einheit"]
@@ -38,6 +38,11 @@ JsonPath: `$[?(@.tag=='token#YourTokenTag:OptionalNestedId')].value`
 
 JsonPath: `$..*[?(@.Serial=='123456')].ValueDescs[?(@.DescriptionStr=='Energy' and @.Tariff==1)].LoggerLastValue`
 
-* Einheit mit der Seriennummer *123456*
+* Gerät mit der Seriennummer *123456*
 * Wert von *Energie* mit dem Tarif *1*
 
+#### Solvimus MUC.easplus / MUCxxx
+
+JsonPath: `$.muc.meter[?(@.METER_ID=='123456')].data[?(@.DESCRIPTION=='Energy')].entry[-1].VAL`
+* Gerät mit der Seriennummer *123456*
+* Letzer gelesener Wert (`[-1].VAL`) von *Energie*
