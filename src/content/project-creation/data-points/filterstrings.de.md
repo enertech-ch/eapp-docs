@@ -36,7 +36,7 @@ JsonPath: `$[?(@.tag=='token#YourTokenTag:OptionalNestedId')].value`
 
 #### EMU M-Bus Center
 
-JsonPath: `$..*[?(@.Serial=='123456')].ValueDescs[?(@.DescriptionStr=='Energy' and @.Tariff==1)].LoggerLastValue`
+JsonPath: `$[?(@.Serial=='123456')].ValueDescs[?(@.DescriptionStr=='Energy' and @.Tariff==1)].LoggerLastValue`
 
 * Gerät mit der Seriennummer *123456*
 * Wert von *Energie* mit dem Tarif *1*
