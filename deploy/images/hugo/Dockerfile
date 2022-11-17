@@ -1,7 +1,7 @@
 FROM debian:jessie
 
-ENV HUGO_VERSION 0.80.0
-ENV HUGO_BINARY hugo_${HUGO_VERSION}_Linux-64bit.deb
+ENV HUGO_VERSION 0.105.0
+ENV HUGO_BINARY hugo_${HUGO_VERSION}_linux-amd64.deb
 
 # Install pygments (for syntax highlighting) 
 RUN apt-get -qq update \
