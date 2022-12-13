@@ -7,12 +7,43 @@ draft: false
 keywords: ["utility", "bill", "create", "costs", "items", "contract", "contracts", "period", "periods", "billing"]
 ---
 
-In Lexgate you can create periodic Utility Bills with a few steps. It's required that your Project has it's Cost Centres set up. How to set up Cost Centres is described [here]({{<relref "/project-creation/accounting-structure">}}).
+In Lexgate you can create periodic Utility Bills with a few steps.
+
+### Requirements
+It's required that your Project has its Cost Centres set up. How to set up Cost Centres is described [here]({{<relref "/project-creation/accounting-structure">}}).
 
 ### Billing Period
-A Billing Period defines the period which should be used for an Utility Bill. You can create one in {{<lga-nav text="Billing Period">}}.
+A Billing Period defines the period which should be used for a Utility Bill. 
 
-As soon as a Billing Period is used for an Utility Bill, it can't be changed anymore.
+You can create one in {{<lga-nav text="Billing Period">}} by clicking the {{<lga-btn type="negative" icon="add">}}-Icon and filling in the general information:
+* {{<lga-lbl text="Name">}}: A user defined name for the Billing Period.
+* {{<lga-lbl text="Automatically create subsequent period">}}: If checked, the period is automatically renewed. See [details]({{<relref "#billing-period-renewal">}})
+* {{<lga-lbl text="Start date">}}: First day of the period. Should be the day after the previous period ended (mostly first of month).
+* {{<lga-lbl text="Start date">}}: Last day of the period. Should be the day before the next period starts (mostly last of month).
+
+In the list after, you can narrow down the Cost Centers which should be used for the Utility Bill:
+* **Provider**: Select whether the Cost Centre should show up as Provider on Documents.
+* **Consumer**: Select whether there should be a Document generated for the Cost Centre.
+* **On Account**: Fill the *On Account* value in the document with the given amount.
+
+#### Automatically created subsequent periods {#billing-period-renewal}
+If the {{<lga-lbl text="Automatically create subsequent period">}}-checkbox is checked, the subsequent period is created automatically on the first day ofter the current period ended.
+All information of the current period is copied over, and the name is suffixed with the ⎘-icon.
+
+If the {{<lga-lbl text="Name">}} is contains one or multiple of those patterns, it is automatically updated:
+* **Year** [nnnn] (*2017* or *2019*):    If the length of the billing period is longer than 188 days, any number between 2001 and 2099 is increased by 1.
+* **Year-Offset** [nnnn-n|nnnn.n] (*2018-1* or *2019.4*):   If the length of the billing period is between 1 and 187 days, the offset in this pattern is increased by 1. 
+  The upper limit for the offset is determined by the length of the period. For example, if the period is 3 months long, which can be contained in a year 4 times, the upper limit is 4.
+  After the upper limit is reached, the offset is reset to 1, and the year is increased by 1. For example, 2019-4 will be set to 2020-1 with the next subsequent creation.
+* **Count** [#n] (*#1* or *#3456*):   If a *#*-character followed by any number is found in the name, the number is increased by 1 automatically. 
+ This is also default behaviour, if no increasable value is found in the name.
+
+The name can also contain characters beside the mentioned patterns. The pattern must be segregated by a space character.
+Examples:
+* *"Utility Bill 2019"* → *"Utility Bill 2020 ⎘"* (if length of the Billing Period is 1 year)
+* *"Electricity Bill 2019-4 | Building West"* → *"Electricity Bill 2020-1 | Building West ⎘"* (if the length of the Billing Period is 3 months)
+* *"My very customized #13 bill"* → *"My very customized #14 bill ⎘"*
+
 
 ### Cost Items
 Furthermore, Lexgate requires information about the costs to consider. You can record Invoices in {{<lga-nav text="Cost Items">}} like this:

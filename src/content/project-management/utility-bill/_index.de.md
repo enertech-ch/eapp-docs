@@ -7,12 +7,38 @@ draft: false
 keywords: ["nebenkosten", "abrechnung", "erstellen", "kosten", "position", "vertrag", "verträge", "periode"]
 ---
 
-In Lexgate können Sie mit wenigen Schritten die periodischen Nebenkostenabrechnung generieren. Voraussetzung dafür ist, dass die Kostenstellen im Projekt korrekt eingerichtet sind. Weitere Informationen zum Einrichten der Kostenstellen sind [hier]({{<relref "/project-creation/accounting-structure">}}) zu finden.
+In Lexgate können Sie mit wenigen Schritten die periodische Nebenkostenabrechnung generieren.
+
+### Voraussetzungen
+
+Voraussetzung dafür ist, dass die Kostenstellen im Projekt korrekt eingerichtet sind. Weitere Informationen zum Einrichten der Kostenstellen sind [hier]({{<relref "/project-creation/accounting-structure">}}) zu finden.
 
 ### Abrechnungsperiode
-Eine Abrechnungsperiode definiert die Zeitdauer, die für eine Abrechnung berücksichtgt werden soll. Diese kann im Menüpunkt {{<lga-nav text="Abrechungsperiode">}} erstellt werden.
+Eine Abrechnungsperiode definiert die Zeitdauer, die für eine Abrechnung berücksichtigt werden soll.
 
-Sobald eine Abrechnungsperiode für eine Nebenkostenabrechnung verwendet wurde, kann diese nicht mehr verändert werden.
+Diese kann im Menüpunkt {{<lga-nav text="Abrechnungsperiode">}} erstellt werden, indem auf den {{<lga-btn type="negative" icon="add">}}-Button geklickt wird und die benötigten Angaben ausgefüllt werden:
+* {{<lga-lbl text="Name">}}: Ein frei wählbarer Name für die Abrechnungsperiode.
+* {{<lga-lbl text="Nachfolgende Periode automatisch erstellen">}}: Wenn angewählt, wird die nachfolgende Abrechnungsperiode automatisch erstellt. Siehe [Details]({{<relref "#abrechnungsperiode-erneuern">}})
+* {{<lga-lbl text="Start date">}}: Erster Tag der Abrechnungsperiode. Dies sollte der erste Tag sein, nachdem die vorherige Periode geendet hat (normalerweise der Erste des Monats).
+* {{<lga-lbl text="Start date">}}: Letzter Tag der Abrechnungsperiode. Dies sollte der letzte Tag sein, bevor die nächste Periode beginnt (normalerweise der Letzte des Monats).
+
+In der nachfolgenden Liste kann eingeschränkt werden, welche Kostenstellen für die Abrechnungen verwendet werden sollen:
+* **Versorger**: Anwählen, wenn die Kostenstelle in Dokumenten als Versorger aufgeführt werden soll. 
+* **Verbraucher**: Anwählen, wenn für die Kostenstelle ein Dokument generiert werden soll.
+* **Akonto**: Eingeben, welcher Wert im Dokument in das *Akonto*-Feld eingefüllt werden soll.
+
+#### Nachfolgende Perioden automatisch erstellen {#abrechnungsperiode-erneuern}
+Wenn das Kästchen {{<lga-lbl text="Nachfolgende Periode automatisch erstellen">}} angewählt ist, wird die Folgeperiode am ersten Tag nach der gültigen Periode erstellt.
+Dabei werden alle Angaben kopiert und der Name mit einem ⎘-Symbol ergänzt.
+
+Wenn der {{<lga-lbl text="Name">}} eines oder mehrere der folgenden Muster enthält, wird er automatisch aktualisiert:
+* **Jahr** [nnnn] (*2017* oder *2019*):    Sofern die Periode länger als 188 Tage ist, wird jede Zahl zwischen 2001 und 2099 um 1 erhöht.
+* **Jahr-Versatz** [nnnn-n|nnnn.n] (*2018-1* oder *2019.4*):   Sofern die Periode zwischen 1 und 187 Tagen lang ist, wird der Versatz um 1 erhöht.
+  Dabei wird das obere Limit des Versatz aus der Periodenlänge festgestellt. Beispiel: Wenn die Periode 3 Monate lang ist, welche somit 4 mal Platz hat in einem Jahr, ist das obere Limit 4.
+  Wenn das obere Limit erreicht ist, wird bei der nächsten Erhöhung der Versatz auf 1 gesetzt, und die Jahrzahl um 1 erhöht. Beispiel: Aus *2019-4* wird *2020-1*.
+* **Zähler** [#n] (*#1* oder *#3456*):   Wenn das *#*-Zeichen, gefolgt von einer beliebigen Nummer, im Namen erkannt wird, wird die Nummer um 1 erhöht.
+  Dies entspricht dem Standartverhalten, falls im Namen kein zählbarer Wert gefunden wird.
+
 
 ### Kostenpositionen
 Als nächstes muss Lexgate wissen, welche Kosten es für die Abrechnung berücksichtigen soll. Dazu können Sie Rechnungen unter {{<lga-nav text="Kostenpositionen">}} auf eine Kostenstelle buchen:
