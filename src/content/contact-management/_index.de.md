@@ -1,7 +1,7 @@
 ---
 title: "Kontaktverwaltung"
 date: 2020-02-02T13:00:00
-lastmod: 2020-02-02T13:00:00
+lastmod: 2023-01-24T13:00:00
 draft: false
 keywords: ["kontakt", "kontakte", "adresse", "adressbuch", "adress"]
 
@@ -21,6 +21,13 @@ Um ein Adressbuch zu erstellen, klicken Sie in der Adressbuchleiste auf der link
 Adressbücher können mit einem Klick auf das neben dem Namen angezeigten {{<lga-btn type="negative" icon="edit">}}-Icons bearbeitet werden.
 
 Unter dem Tab {{<lga-tab text="Benutzer">}} können weitere berechtigte Benutzer hinzugefügt werden. Beachten Sie, dass Benutzer mit der Rolle "Betrachter" (Viewer) weder das Adressbuch noch die eingetragenen Kontakte bearbeiten können.
+
+#### Import/Export
+Eine Liste von Kontakten kann im Tab {{<lga-tab text="Import/Export">}} importiert und exportiert werden.
+
+Zum Importieren, wählen Sie eine CSV-, XLS oder XLSX-Datei mit den Kontakten von Ihrem Computer und klicken Sie auf {{<lga-btn text="Importieren">}}. Die Spaltennamen müssen genau wie angegeben lauten (englisch).
+
+Zum Exportieren, klicken Sie auf den Button {{<lga-btn text="Exportieren">}}.
 
 ### Kontakte
 

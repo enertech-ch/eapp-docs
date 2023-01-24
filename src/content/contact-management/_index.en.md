@@ -1,7 +1,7 @@
 ---
 title: "Contact Management"
 date: 2020-02-03T13:00:00
-lastmod: 2020-02-03T13:00:00
+lastmod: 2023-01-24T13:00:00
 draft: false
 keywords: ["contact", "contacts", "address", "book"]
 
@@ -21,6 +21,13 @@ To create an Address Book, click the field {{<lga-lbl text="Start typing to add"
 Address Books can be changed by clicking the {{<lga-btn type="negative" icon="edit">}}-icon next to the name.
 
 Switch to tab {{<lga-tab text="Users">}} to add permitted Users. Please note, that Users with the Role "Viewer" can not change the Address Book or Contacts within it.
+
+#### Import/Export
+A list of contacts can be imported in the tab {{<lga-tab text="Import/Export">}}.
+
+To import, select a CSV-, XLS- or XLSX-File with your contacts from your computer and click {{<lga-btn text="Import">}}. The column names must be exactly as specified in the form.
+
+To export, click the {{<lga-btn text="Export">}} button. 
 
 ### Contacts
 
