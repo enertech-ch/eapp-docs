@@ -123,7 +123,7 @@ Um die Anzahl der Elemente in einer Liste zu zählen, können Sie das `length`-A
 #### parameters  
 |parameter|inhalt|beispiele  
 |--|--|--|  
-|**1**|string or variable|`Date` or `Invoice`|  
+|**1**|string or variable|`Date` oder `Invoice`|  
   
 #### Beispiele  
 ```handlebars  
@@ -138,10 +138,10 @@ Im Anzeigemodus wird dieser Text dann gerendert.
 #### parameters  
 |parameter|inhalt|optional|beispiele  
 |--|--|--|--|  
-|**1**|reference||`greetings` or `customer_reference`|  
-|style|string|yes|`height: 100%` or `color: white; background-color: red;`  
-|type|string|yes, default `text`|`text` or `number`
-|raw-output|bool|yes, default `false`|`true` or `false`
+|**1**|reference||`greetings` oder `customer_reference`|  
+|style|string|ja|`height: 100%` oder `color: white; background-color: red;`  
+|type|string|ja, standart `text`|`text` oder `number`
+|raw-output|bool|ja, standart `false`|`true` oder `false`
   
 #### beispiele  
 ```handlebars  
@@ -156,8 +156,8 @@ Im Anzeigemodus wird dieser Text dann gerendert.
 #### parameters  
 |parameter|inhalt|optional|beispiele  
 |--|--|--|--|  
-|**1**|reference||`address` or `description`|  
-|style|string|yes|`height: 100%` or `color: white; background-color: red;`  
+|**1**|reference||`address` oder `description`|  
+|style|string|ja|`height: 100%` oder `color: white; background-color: red;`  
   
 #### beispiele
 ```handlebars  
@@ -173,7 +173,7 @@ Es dürfen nur Bilder aus derselben Vorlagenbibliothek wie die Vorlage verwendet
 |parameter|inhalt|optional|beispiele  
 |--|--|--|--|  
 |**1**|Image ID (string)||`1mag6d1d`|  
-|style|string|yes|`height: 100%` or `width:200px; border: 2px solid black`|
+|style|string|ja|`height: 100%` oder `width:200px; border: 2px solid black`|
 
 #### beispiele  
 ```handlebars  
@@ -185,11 +185,11 @@ Es dürfen nur Bilder aus derselben Vorlagenbibliothek wie die Vorlage verwendet
 Zeigt ein Datum in einem bestimmten Format und in der Lokalisierung des Dokuments an.
   
 #### Parameters  
-|parameter|Inhalt|optional|Beispiele  
+|parameter|Inhalt|optional|beispiele  
 |--|--|--|-|
-|**1** or *content*|ISO8601 date string||`2000-01-01T00:00:01` or `{{var_with_date}}`
-|date-format|`none`, `full`, `long`, `medium`, `short`|yes, default `long`|  
-|time-format|`none`, `full`, `long`, `medium`, `short`|yes, default `none`|  
+|**1** or *content*|ISO8601 date string||`2000-01-01T00:00:01` oder `{{var_with_date}}`
+|date-format|`none`, `full`, `long`, `medium`, `short`|ja, standart `long`|  
+|time-format|`none`, `full`, `long`, `medium`, `short`|ja, standart `none`|  
   
 #### beispiele  
 ```handlebars  
@@ -204,13 +204,13 @@ Zeigt eine Zahl in einem bestimmten Format und in der Lokalisierung des Dokument
 #### Parameters  
 |parameter|Inhalt|optional|Beispiele  
 |--|--|--|--|  
-|**1** or *content*|numeric||`123456` or `amount`|  
-|precision|`min` or `min,max`|yes (default: `2`)|`1` or `2,4`
-|rounding-mode|`down` or `up`|yes (default: `nearest`)|
-|rounding-increment|string|yes (default: `0`)|`0.2` or `0.05`
-|format|`none`, `decimal` or `currency`|yes (default: `decimal`)
-|currency|ISO4217 currency string|yes (default: `eur`)|`usd` or `gbp`
-|currency-display|`none`, `symbol`, `code`, `name`|yes (default: `symbol`)
+|**1** oder *content*|numeric||`123456` oder `amount`|  
+|precision|`min` oder `min,max`|ja (standart: `2`)|`1` oder `2,4`
+|rounding-mode|`down` oder `up`|ja (standart: `nearest`)|
+|rounding-increment|string|ja (standart: `0`)|`0.2` oder `0.05`
+|format|`none`, `decimal` oder `currency`|ja (standart: `decimal`)
+|currency|ISO4217 currency string|ja (standart: `eur`)|`usd` oder `gbp`
+|currency-display|`none`, `symbol`, `code`, `name`|ja (standart: `symbol`)
 
 #### beispiele  
 ```handlebars
