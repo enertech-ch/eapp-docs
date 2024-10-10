@@ -115,6 +115,7 @@ To count items in a list, you can use the `length`-attribute:
   [number](#number): display a field containing a number in a specified format  
   [calculate](#calculate): display a custom calculated value  
   [payment-slip](#payment-slip): display a payment slip block  
+  [match](#match): allows filter a specific object in content
 
 ### translate  
 Translate a key depending on the document language.  
@@ -275,3 +276,27 @@ All parameters except type are renderable with Mustache template syntax and use 
 {{payment-slip "ch-qr"}}
 {{payment-slip "ch-qr" creditor-name="Other Name" creditor-addressline-1="Other Address" creditor-addressline-2="4545 Other Town" creditor-country="DE" creditor-iban="DE93 0076 2011 6238 5295 1" debtor-name="Third name" debtor-addressline-1="Third address" debtor-addressline-2="6767 Third Town" debtor-country="CH" payment-amount="245.35" payment-currency="EUR" reference="CustomReference"}}
 ```  
+
+### match
+The MatchHelper provides a utility for matching strings in Handlebars templates using regular expressions. This helper can be used to filter or search for specific patterns in content within your Handlebars templates.
+
+#### parameters
+|parameter|content|optional|examples  
+|--|--|--|-|
+|**1** |reference|| `Invoice`|
+|pattern|Regular expression pattern|no| `"\\d+" for matching digits`|
+|flag|Optional regex flags|yes| `"g" for global matching`|
+#### examples
+```handlebars 
+{{#if (match Invoice pattern="12345")}}
+  Contains a number!
+{{else}}
+  No numbers found.
+{{/if}}
+
+{{#if (match Invoice pattern="12345" flags="g")}}
+  Contains a number!
+{{else}}
+  No numbers found.
+{{/if}}
+``` 
