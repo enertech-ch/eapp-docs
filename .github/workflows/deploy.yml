@@ -1,0 +1,41 @@
+name: Build and Deploy Hugo Site
+
+on:
+  push:
+    branches:
+      - main
+
+env:
+  GCLOUD_PROJECT: lextira-lexgate-prod
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          submodules: recursive
+
+      - name: Setup Hugo
+        uses: peaceiris/actions-hugo@v3
+        with:
+          hugo-version: '0.105.0'
+          #extended: true
+
+      - name: Build site
+        run: hugo --debug -s ${{ github.workspace }}/src -d ${{ github.workspace }}/public
+
+      - name: Authenticate to Google Cloud
+        uses: google-github-actions/auth@v2
+        with:
+          credentials_json: ${{ secrets.GCLOUD_API_KEYFILE }}
+
+      - name: Set up Cloud SDK
+        uses: google-github-actions/setup-gcloud@v2
+        with:
+          project_id: ${{ env.GCLOUD_PROJECT }}
+
+      - name: Deploy to Google Cloud Storage
+        run: gsutil -m cp -r ./public/* gs://docs.lexgate.ch
