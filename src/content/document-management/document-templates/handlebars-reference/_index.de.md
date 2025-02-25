@@ -1,17 +1,17 @@
 ---
-title: "Handlebars Referenz"
+title: "Handlebars Reference"
 date: 2020-01-02T13:00:00
 lastmod: 2021-09-16T08:33:00
 weight: 0299
 draft: false
 keywords: ["function", "reference", "mustache"]
----  
+---
 
 ## Syntax 
-Dokumentvorlagen verwenden die [Handlebars](https://handlebarsjs.com/guide/) Templating-Sprache. Sie können eine Vorlage in HTML schreiben, indem Sie Handlebars-Ausdrücke verwenden, um auf dynamische Inhalte zu verweisen.
+Document Templates use [Handlebars](https://handlebarsjs.com/guide/) Templating Language. You can write a Template in HTML with Handlebars Expressions to reference dynamic content.
 
-### Variablen
-Jedes Dokument hat seine Variablen direkt im Kontext verfügbar. Um auf eine Variable zuzugreifen, verwenden Sie die folgende Syntax:
+### Variables
+Each documents has it's variables available directly in context. To access a variable, use the following syntax:
 ```handlebars
 {{NameOfTheVariable}}
 ```
@@ -21,22 +21,22 @@ Some variables my be nested within objects. You can navigate through objects by 
 {{Object.Subobject.Name}}
 ```
 
-### Kontext
-Dokumente haben zwei Kontexte: den Hauptkontext und darin verschachtelt den Metakontext.
+### Context
+Documents have two contexts: the primary context, and nested within, the Meta context.
 
-#### Hauptkontext
-Der Hauptkontext enthält alle Variablen eines Dokuments. Diese können durch die Verwendung von [inputs](#input) in der Vorlage modifiziert werden. Bei den meisten Dokumenten sind viele Variablen während der Generierung vordefiniert. Je nach Dokumenttyp können einige Variablen gesperrt sein, was bedeutet, dass sie unveränderlich sind. Dies gilt beispielsweise für Geldbeträge.
+#### Primary context
+The primary context holds all variables of a document. They can be modified by using [inputs](#input) in the template. For most documents, a lot of variables are predefined during generation. Depending on the document type, some variables may be locked, which means they are immutable. This applies for example for monetary amounts.
 
-#### Metakontext
-Jedes Dokument hat auch einen Metakontext. Er ist im Hauptkontext als Eigenschaft namens Document verfügbar. Er enthält alle Metadaten des Dokuments, wie z. B. die Beziehungen und andere direkt zugewiesene Attribute. Zum Beispiel können Sie auf den Namen des Gläubigers des Dokuments zugreifen, indem Sie Folgendes verwenden:
+#### Meta context
+Each Document also has a Meta context. It's available in the Main context as property called `Document`. It holds all meta data of the document, like the relations and other directly assigned attributes. For example, you can access the Documents Creditor Name by using:
 ```handlebars
 {{Document.creditor.name}}
 ```
 
-### Beispiel
-Hier ein kurzes Beispiel, wie eine einfache Dokumentvorlage aussehen könnte.
+### Example
+For starters, here is a quick example of how a simple Document Template could look like. 
 
-Wenn Sie Probleme beim Lesen haben, ist es möglicherweise besser, Ihren Lexgate-Integrator zu kontaktieren.
+If you have trouble reading this, you might be better of by contacting your Lexgate Integrator.
 
 ```html
 <html>
@@ -56,14 +56,14 @@ Wenn Sie Probleme beim Lesen haben, ist es möglicherweise besser, Ihren Lexgate
       }
       @media only screen {
         body {
-      	  margin: 10mm;
+          margin: 10mm;
           margin-left: 20mm;
-      	  margin-top: 27mm;
+          margin-top: 27mm;
           box-sizing: border-box;
         }
       }
 
-      /** Fügen Sie hier Ihre Styles hinzu */  
+      /** Add your styles here */
     </style>
   </head>
   <body>
@@ -90,108 +90,108 @@ Wenn Sie Probleme beim Lesen haben, ist es möglicherweise besser, Ihren Lexgate
 
 
 
-## Standardfunktionen:
+## Default Functions:
 
-  [if](https://handlebarsjs.com/guide/builtin-helpers.html#if): bedingte Darstellung
-  [unless](https://handlebarsjs.com/guide/builtin-helpers.html#unless): invertiertes `if`  
-  [each](https://handlebarsjs.com/guide/builtin-helpers.html#each): iIteration über eine Liste
-  [with](https://handlebarsjs.com/guide/builtin-helpers.html#with): Kontext wechseln  
-  [lookup](https://handlebarsjs.com/guide/builtin-helpers.html#lookup): dynamische Parameterauflösung
-  [length](#length): Anzahl der Elemente in einer Liste 
+  [if](https://handlebarsjs.com/guide/builtin-helpers.html#if): conditionally render  
+  [unless](https://handlebarsjs.com/guide/builtin-helpers.html#unless): inverted `if`  
+  [each](https://handlebarsjs.com/guide/builtin-helpers.html#each): iterate over a list  
+  [with](https://handlebarsjs.com/guide/builtin-helpers.html#with): change context  
+  [lookup](https://handlebarsjs.com/guide/builtin-helpers.html#lookup): dynamic paramter resolution   
+  [length](#length): count items in a list  
 
 ### length
-Um die Anzahl der Elemente in einer Liste zu zählen, können Sie das `length`-Attribut verwenden:
+To count items in a list, you can use the `length`-attribute:
 ```handlebars
 {{Object.lengt}}
 ```
 
 ## Lexgate-Specific Functions
 
-  [translate](#translate): übersetzt einen Schlüssel  
-  [input](#input): erlaubt benutzerdefinierten Text in einem Eingabefeld  
-  [textarea](#textarea): erlaubt benutzerdefinierten Text in einem mehrzeiligen Textfeld  
-  [image](#image): zeigt ein Bild aus derselben Vorlagenbibliothek an  
-  [datetime](#datetime): zeigt ein Feld mit einem Datum in einem bestimmten Format an  
-  [number](#number): zeigt ein Feld mit einer Zahl in einem bestimmten Format an  
-  [calculate](#calculate): zeigt einen benutzerdefinierten berechneten Wert an  
-  [payment-slip](#payment-slip): zeigt einen Zahlungsblock an
-  [match](#match): ermöglicht das Filtern eines bestimmten Objekts im Inhalt  
+  [translate](#translate): translates a key  
+  [input](#input): allows custom text in an input-element  
+  [textarea](#textarea): allows custom text in a textarea-element  
+  [image](#image): display am image from the same template library  
+  [datetime](#datetime): display a field containing a date in a specified format  
+  [number](#number): display a field containing a number in a specified format  
+  [calculate](#calculate): display a custom calculated value  
+  [payment-slip](#payment-slip): display a payment slip block  
+  [match](#match): allows filter a specific object in content
 
 ### translate  
-Übersetzt einen Schlüssel abhängig von der Sprache des Dokuments.  
+Translate a key depending on the document language.  
    
 #### parameters  
-|parameter|inhalt|beispiele  
+|parameter|content|examples  
 |--|--|--|  
-|**1**|string or variable|`Date` oder `Invoice`|  
+|**1**|string or variable|`Date` or `Invoice`|  
   
-#### Beispiele  
+#### examples  
 ```handlebars  
 {{translate "Date"}}
 {{translate "Invoice"}} for {{translate type}}
 ```  
   
 ### input  
-Zeigt dem Benutzer im Bearbeitungsmodus ein Eingabefeld, in das er benutzerdefinierten Text eingeben kann.
-Im Anzeigemodus wird dieser Text dann gerendert.  
+Show the user in edit mode an input field, where he can put custom text.  
+In display mode, this text is then rendered.  
   
 #### parameters  
-|parameter|inhalt|optional|beispiele  
+|parameter|content|optional|examples  
 |--|--|--|--|  
-|**1**|reference||`greetings` oder `customer_reference`|  
-|style|string|ja|`height: 100%` oder `color: white; background-color: red;`  
-|type|string|ja, standart `text`|`text` oder `number`
-|raw-output|bool|ja, standart `false`|`true` oder `false`
+|**1**|reference||`greetings` or `customer_reference`|  
+|style|string|yes|`height: 100%` or `color: white; background-color: red;`  
+|type|string|yes, default `text`|`text` or `number`
+|raw-output|bool|yes, default `false`|`true` or `false`
   
-#### beispiele  
+#### examples  
 ```handlebars  
 {{input "greetings"}}
 {{input "customer_reference" style="height:100%;color:white;background-color:red;" type="number" raw-output=true}}
 ```  
   
 ### textarea  
-Zeigt dem Benutzer im Bearbeitungsmodus ein mehrzeiliges Textfeld an, in das er benutzerdefinierten Text eingeben kann.
-Im Anzeigemodus wird dieser Text dann gerendert. 
+Show the user in edit mode an textarea field, where he can put custom multiline text.  
+In display mode, this text is then rendered.  
   
 #### parameters  
-|parameter|inhalt|optional|beispiele  
+|parameter|content|optional|examples  
 |--|--|--|--|  
-|**1**|reference||`address` oder `description`|  
-|style|string|ja|`height: 100%` oder `color: white; background-color: red;`  
+|**1**|reference||`address` or `description`|  
+|style|string|yes|`height: 100%` or `color: white; background-color: red;`  
   
-#### beispiele
+#### examples
 ```handlebars  
 {{textarea "address"}}
 {{textarea "description" style="height:100%;color:white;background-color:red;"}}
 ```  
 
 ### image  
-Fügt ein Bild zur Dokumentvorlage hinzu.
-Es dürfen nur Bilder aus derselben Vorlagenbibliothek wie die Vorlage verwendet werden.
+Adds an image to the document template.
+Images from the same template library as template are only allowed.
   
 #### parameters  
-|parameter|inhalt|optional|beispiele  
+|parameter|content|optional|examples  
 |--|--|--|--|  
 |**1**|Image ID (string)||`1mag6d1d`|  
-|style|string|ja|`height: 100%` oder `width:200px; border: 2px solid black`|
+|style|string|yes|`height: 100%` or `width:200px; border: 2px solid black`|
 
-#### beispiele  
+#### Examples  
 ```handlebars  
 {{image "1mag6d1d"}}
 {{image "abcd1234" style="width:200px; border: 2px solid black"}}
 ```    
 
 ### datetime  
-Zeigt ein Datum in einem bestimmten Format und in der Lokalisierung des Dokuments an.
+Displays a date in a specified format and in the documents locale.
   
 #### Parameters  
-|parameter|Inhalt|optional|beispiele  
+|parameter|content|optional|examples  
 |--|--|--|-|
-|**1** or *content*|ISO8601 date string||`2000-01-01T00:00:01` oder `{{var_with_date}}`
-|date-format|`none`, `full`, `long`, `medium`, `short`|ja, standart `long`|  
-|time-format|`none`, `full`, `long`, `medium`, `short`|ja, standart `none`|  
+|**1** or *content*|ISO8601 date string||`2000-01-01T00:00:01` or `{{var_with_date}}`
+|date-format|`none`, `full`, `long`, `medium`, `short`|yes, default `long`|  
+|time-format|`none`, `full`, `long`, `medium`, `short`|yes, default `none`|  
   
-#### beispiele  
+#### Examples  
 ```handlebars  
 {{datetime invoice_date}}
 {{#datetime}}2000-01-01T00:00:01{{/datetime}}
@@ -199,20 +199,20 @@ Zeigt ein Datum in einem bestimmten Format und in der Lokalisierung des Dokument
 ```  
   
 ### number  
-Zeigt eine Zahl in einem bestimmten Format und in der Lokalisierung des Dokuments an.  
+Displays a number in a specified format and in the documents locale.  
   
 #### Parameters  
-|parameter|Inhalt|optional|Beispiele  
+|parameter|content|optional|examples  
 |--|--|--|--|  
-|**1** oder *content*|numeric||`123456` oder `amount`|  
-|precision|`min` oder `min,max`|ja (standart: `2`)|`1` oder `2,4`
-|rounding-mode|`down` oder `up`|ja (standart: `nearest`)|
-|rounding-increment|string|ja (standart: `0`)|`0.2` oder `0.05`
-|format|`none`, `decimal` oder `currency`|ja (standart: `decimal`)
-|currency|ISO4217 currency string|ja (standart: `eur`)|`usd` oder `gbp`
-|currency-display|`none`, `symbol`, `code`, `name`|ja (standart: `symbol`)
+|**1** or *content*|numeric||`123456` or `amount`|  
+|precision|`min` or `min,max`|yes (default: `2`)|`1` or `2,4`
+|rounding-mode|`down` or `up`|yes (default: `nearest`)|
+|rounding-increment|string|yes (default: `0`)|`0.2` or `0.05`
+|format|`none`, `decimal` or `currency`|yes (default: `decimal`)
+|currency|ISO4217 currency string|yes (default: `eur`)|`usd` or `gbp`
+|currency-display|`none`, `symbol`, `code`, `name`|yes (default: `symbol`)
 
-#### beispiele  
+#### Examples  
 ```handlebars
 {{number amount}}
 {{#number}}1234.67{{/number}}
@@ -221,80 +221,82 @@ Zeigt eine Zahl in einem bestimmten Format und in der Lokalisierung des Dokument
 ```
   
 ### calculate  
-Zeigt ein Feld mit einem benutzerdefinierten berechneten Wert an.
+Displays a field containing a cusomizable calculated value.
 
-Hinweis: Das Ergebnis einer Berechnung ist immer eine Rohzahl. Diese kann formatiert werden, indem sie in die [number-function](#number) eingebettet wird.
-#### Parameters  
-|parameter|content|optional|beispiel  
-|--|--|--|--|
-|*content*|string||Siehe Beispiele unten
+Note: The Output of a calculations is always a raw number. They can be formatted by wrapping it in the [number-function](#number)
   
-#### beispiele  
+#### Parameters  
+|parameter|content|optional|examples  
+|--|--|--|--|
+|*content*|string||See examples below
+  
+#### Examples  
 ```handlebars
 {{#calculate}}{{amount}}+10{{/calculate}}
 {{#calculate}}{{amount}}*{{vat_rate}}{{/calculate}}
 ```  
 
-#### Unterstützte Symbole
-|Symbol|Beschreibung|Beispiel
+#### Supported Symbols
+|Symbol|Description|Example
 |--|--|--
-|+|Additionsoperator|`2+3` = `5`
-|-|Subtraktionsoperator|`2-3` = `-1`
-|*|Multiplikationsoperator|`2*3` = `6`
-|/|Divisionsoperator|`3/2` = `1.5`
-|Mod|Modulusoperator|`3 Mod 2` = `1`
-|^|Potenzoperator|`2^3` = `8`
-|root|Quadratwurzelfunktion|`root 4` = `2`
-|( ) | Klammern|`2*(3+4)` = `14`
-|pi|Mathematische Konstante pi|`pi` = `3.14...`
+|+|Addition Operator|`2+3` = `5`
+|-|Subtraction Operator|`2-3` = `-1`
+|*|Multiplication Operator|`2*3` = `6`
+|/|Division Operator|`3/2` = `1.5`
+|Mod|Modulus Operator|`3 Mod 2` = `1`
+|^|Power Operator|`2^3` = `8`
+|root|Sqare Root Function|`root 4` = `2`
+|( ) | Parenthesis|`2*(3+4)` = `14`
+|pi|Math Constant pi|`pi` = `3.14...`
 
 ### payment-slip  
-Zeigt ein Feld mit einem dynamischen Wert an, optional in einem bestimmten Format.
-Alle Parameter außer dem Typ sind mit Mustache-Templating-Syntax renderbar und verwenden Dokumentvariablen.   
+Displays a field containing a dynamic value, optionally in a specified format.  
+All parameters except type are renderable with Mustache template syntax and use document variables.   
   
 #### Parameters  
-|parameter|Inhalt|optional|Standardwert  
+|parameter|content|optional|default  
 |--|--|--|--|--|  
-|**1**|Zahlungsschein-Typ||`ch-qr` - only Swiss QR bill is available for now|  
-|creditor-name|Name des Gläubigers|ja|`{{Document.creditor.name}}`|  
-|creditor-addressline-1|Erste Zeile der Gläubigeradresse|ja|`{{Document.creditor.address}}`|  
-|creditor-addressline-2|Zweite Zeile der Gläubigeradresse|ja|`{{Document.creditor.address_zip}} {{Document.creditor.address_town}}`|  
-|creditor-country|Land des Gläubigers|ja|`{{Document.creditor.address_country_code}}`|  
-|creditor-iban|IBAN des Gläubigers|ja|`{{Document.creditor.iban}}`|  
-|debtor-name|Name des Schuldners|ja|`{{Document.receiver.name}}`|  
-|debtor-addressline-1|Erste Zeile der Schuldneradresse|ja|`{{Document.receiver.address}}`|  
-|debtor-addressline-2|Zweite Zeile der Schuldneradresse|ja|`{{Document.receiver.address_zip}} {{Document.receiver.address_town}}`|  
-|debtor-country|Land des Schuldners|ja|`{{Document.creditor.name}}`|  
-|payment-amount|Zahlungsbetrag|ja|`{{BalanceOutstanding}}`|  
-|payment-currency|Währung der Zahlung|ja|`{{CurrencySymbol}}`|
-|reference-type|Referenztyp. Erlaubt sind `SCOR` und `NON`|ja|`SCOR`|
-|reference|Referenznummer|ja|`{{Document.id}}`|  
+|**1**|Payment slip type||`ch-qr` - only Swiss QR bill is available for now|  
+|creditor-name|Creditor Name|yes|`{{Document.creditor.name}}`|  
+|creditor-addressline-1|Creditor Address First Line|yes|`{{Document.creditor.address}}`|  
+|creditor-addressline-2|Creditor Address Second Line|yes|`{{Document.creditor.address_zip}} {{Document.creditor.address_town}}`|  
+|creditor-country|Creditor Country|yes|`{{Document.creditor.address_country_code}}`|  
+|creditor-iban|Creditor Iban|yes|`{{Document.creditor.iban}}`|  
+|debtor-name|Debtor Name|yes|`{{Document.receiver.name}}`|  
+|debtor-addressline-1|Debtor Address First Line|yes|`{{Document.receiver.address}}`|  
+|debtor-addressline-2|Debtor Address Second Line|yes|`{{Document.receiver.address_zip}} {{Document.receiver.address_town}}`|  
+|debtor-country|Debtor Country|yes|`{{Document.creditor.name}}`|  
+|payment-amount|Payment Amount|yes|`{{BalanceOutstanding}}`|  
+|payment-currency|Payment Currency|yes|`{{CurrencySymbol}}`|
+|reference-type|Reference Type. Allowed are `SCOR` and `NON`|yes|`SCOR`|
+|reference|Reference String|yes|`{{Document.id}}`|  
   
-#### beispiele  
+#### Examples  
 ```handlebars  
 {{payment-slip "ch-qr"}}
 {{payment-slip "ch-qr" creditor-name="Other Name" creditor-addressline-1="Other Address" creditor-addressline-2="4545 Other Town" creditor-country="DE" creditor-iban="DE93 0076 2011 6238 5295 1" debtor-name="Third name" debtor-addressline-1="Third address" debtor-addressline-2="6767 Third Town" debtor-country="CH" payment-amount="245.35" payment-currency="EUR" reference="CustomReference"}}
 ```  
+
 ### match
-Der MatchHelper bietet eine Funktion zum Abgleichen von Zeichenfolgen in Handlebars-Vorlagen mithilfe regulärer Ausdrücke. Dieser Helfer kann verwendet werden, um bestimmte Muster in Inhalten zu filtern oder zu suchen.
+The MatchHelper provides a utility for matching strings in Handlebars templates using regular expressions. This helper can be used to filter or search for specific patterns in content within your Handlebars templates.
 
 #### parameters
-|parameter|inhalt|optional|beispiele  
+|parameter|content|optional|examples  
 |--|--|--|-|
-|**1** |Referenz|| `Invoice`|
-|pattern|Reguläres Ausdrucksmuster|nein| `""\\d+" für Zahlenabgleich`|
-|flag|Optionale Regex-Flags|ja| `"g" für globalen Abgleich`|
-#### beispiele
+|**1** |reference|| `Invoice`|
+|pattern|Regular expression pattern|no| `"\\d+" for matching digits`|
+|flag|Optional regex flags|yes| `"g" for global matching`|
+#### examples
 ```handlebars 
 {{#if (match Invoice pattern="12345")}}
-  Enthält eine Zahl!
+  Contains a number!
 {{else}}
-  Keine Zahl gefunden. 
+  No numbers found.
 {{/if}}
 
 {{#if (match Invoice pattern="12345" flags="g")}}
-  Enthält eine Zahl!
+  Contains a number!
 {{else}}
-  Keine Zahl gefunden. 
+  No numbers found.
 {{/if}}
 ``` 
