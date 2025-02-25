@@ -1,4 +1,4 @@
-name: Build and Deploy Hugo Site
+name: Build and publish Docs
 
 on:
   push:
@@ -39,3 +39,10 @@ jobs:
 
       - name: Deploy to Google Cloud Storage
         run: gsutil -m cp -r ./public/* gs://docs.lexgate.ch
+
+      - name: Invalidate cache
+        run: |
+          gcloud compute --project=lextira-lexgate-prod url-maps invalidate-cdn-cache lga-lba-prod \
+            --host docs.lexgate.ch \
+            --path "/*" \
+            --async
