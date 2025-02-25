@@ -15,12 +15,14 @@ Here we describe how to conntect with a Lansen MQTT-Bridge and the management to
 First you need to create a new Source Adapter. The fresh adapter will have a default configuration in the {{<lga-tab text="JSON">}} tab, which you need to update according to your devices first:
 
 Example:
-```json
+```
 Type            :  Lansen Bridge Webhook
 
 Authentication  :  zCR3QrmOj59uGWgK7YPRTdjMiHQ3xsHN
 
 Config:
+```
+```json
 {
     "devices": [
         {
