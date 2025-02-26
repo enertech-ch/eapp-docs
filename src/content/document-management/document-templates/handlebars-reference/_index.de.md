@@ -258,23 +258,27 @@ All parameters except type are renderable with Mustache template syntax and use 
 |--|--|--|--|--|  
 |**1**|Payment slip type||`ch-qr` - only Swiss QR bill is available for now|  
 |creditor-name|Creditor Name|yes|`{{Document.creditor.name}}`|  
-|creditor-addressline-1|Creditor Address First Line|yes|`{{Document.creditor.address}}`|  
-|creditor-addressline-2|Creditor Address Second Line|yes|`{{Document.creditor.address_zip}} {{Document.creditor.address_town}}`|  
+|creditor-addressline-1|Creditor Address First Line|yes||  
+|creditor-addressline-2|Creditor Address Second Line|yes||  
+|creditor-city|Creditor City|yes|`{{Document.creditor.address_town}}`|  
 |creditor-country|Creditor Country|yes|`{{Document.creditor.address_country_code}}`|  
+|creditor-postcode|Creditor City|yes|`{{Document.creditor.address_zip}}`|  
 |creditor-iban|Creditor Iban|yes|`{{Document.creditor.iban}}`|  
 |debtor-name|Debtor Name|yes|`{{Document.receiver.name}}`|  
-|debtor-addressline-1|Debtor Address First Line|yes|`{{Document.receiver.address}}`|  
-|debtor-addressline-2|Debtor Address Second Line|yes|`{{Document.receiver.address_zip}} {{Document.receiver.address_town}}`|  
-|debtor-country|Debtor Country|yes|`{{Document.creditor.name}}`|  
+|debtor-addressline-1|Debtor Address First Line|yes||  
+|debtor-addressline-2|Debtor Address Second Line|yes||  
+|debtor-city|Debtor Country|yes|`{{Document.creditor.address_town}}`|  
+|debtor-country|Debtor Country|yes|`{{Document.creditor.address_country_cide}}`|  
+|debtor-postcode|Debtor Country|yes|`{{Document.creditor.address_zip}}`|  
 |payment-amount|Payment Amount|yes|`{{BalanceOutstanding}}`|  
 |payment-currency|Payment Currency|yes|`{{CurrencySymbol}}`|
-|reference-type|Reference Type. Allowed are `SCOR` and `NON`|yes|`SCOR`|
+|reference-type|Reference Type. Allowed ones are `SCOR` and `NON`|yes|`SCOR`|
 |reference|Reference String|yes|`{{Document.id}}`|  
   
 #### Examples  
 ```handlebars  
 {{payment-slip "ch-qr"}}
-{{payment-slip "ch-qr" creditor-name="Other Name" creditor-addressline-1="Other Address" creditor-addressline-2="4545 Other Town" creditor-country="DE" creditor-iban="DE93 0076 2011 6238 5295 1" debtor-name="Third name" debtor-addressline-1="Third address" debtor-addressline-2="6767 Third Town" debtor-country="CH" payment-amount="245.35" payment-currency="EUR" reference="CustomReference"}}
+{{payment-slip "ch-qr" creditor-name="Other Name" creditor-addressline-1="Other Address" creditor-addressline-2="4545 Other Town" creditor-city="Other Town" creditor-country="DE" creditor-postcode="4545" creditor-iban="DE93 0076 2011 6238 5295 1" debtor-name="Third name" debtor-addressline-1="Third address" debtor-addressline-2="6767 Third Town" debtor-city="Third Town" debtor-country="CH" debtor-postcode="6767" payment-amount="245.35" payment-currency="EUR" reference="CustomReference"}}
 ```  
 
 ### match
