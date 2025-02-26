@@ -300,3 +300,47 @@ The MatchHelper provides a utility for matching strings in Handlebars templates 
   No numbers found.
 {{/if}}
 ``` 
+
+### electronic-invoice
+The ElectronicInvoiceHelper provides a utility for generating electronic invoices in Handlebars templates. This helper can be used to generate electronic invoices for ZUGFeRD and Factur-X.
+
+#### parameters
+| parameter                          | content                            | optional | examples                                                                                                        |
+|------------------------------------|------------------------------------|----------|-----------------------------------------------------------------------------------------------------------------|
+| **1**                              | Invoice Type                       | no       | `factur-x`                                                                                                      |
+| language                           | Language                           | yes      | `{{language}}`                                                                                                  |
+| summarize-items                    | Summarize Items                    | yes      | `'title' or ''`                                                                                                 |
+| invoice-id                         | Invoice ID                         | yes      | `{{Document.id}}`                                                                                               |
+| invoice-title                      | Invoice Title                      | yes      | `{{Document.name}}`                                                                                             |
+| invoice-date                       | Invoice Date                       | yes      | `{{InvoiceDate}}`                                                                                               |
+| creditor-hash                      | Creditor ID Hash                   | yes      | `{{Document.creditor.id}}`                                                                                      |  
+| creditor-name                      | Creditor Name                      | yes      | `{{Document.creditor.name}}`                                                                                    |  
+| creditor-address-lineone           | Creditor Address First Line        | yes      | `{{Document.creditor.additional_name}}` ?? `{{Document.creditor.address_1}}`                                    |  
+| creditor-address-linetwo           | Creditor Address Second Line       | yes      | `{{Document.creditor.additional_name}}` ? `{{Document.creditor.address_1}}` : `{{Document.creditor.address_2}}` |
+| creditor-address-linethree         | Creditor Address Third Line        | yes      | `{{Document.creditor.additional_name}}` ? `{{Document.creditor.address_2}}` : `''`                              |
+| creditor-city                      | Creditor City                      | yes      | `{{Document.creditor.address_town}}`                                                                            |
+| creditor-country                   | Creditor Country                   | yes      | `{{Document.creditor.address_country_code}}`                                                                    |  
+| creditor-postcode                  | Creditor Postcode                  | yes      | `{{Document.creditor.address_zip}}`                                                                             |
+| creditor-iban                      | Creditor Iban                      | yes      | `{{Document.creditor.iban}}`                                                                                    |  
+| creditor-email                     | Creditor Email                     | yes      | `{{Document.creditor.email}}`                                                                                   |  
+| debtor-hash                        | Debtor ID Hash                     | yes      | `{{Document.receiver.id}}`                                                                                      |  
+| debtor-name                        | Debtor Name                        | yes      | `{{Document.receiver.name}}`                                                                                    |  
+| debtor-address-lineone             | Debtor Address First Line          | yes      | `{{Document.receiver.additional_name}}` ?? `{{Document.receiver.address_1}}`                                    |  
+| debtor-address-linetwo             | Debtor Address Second Line         | yes      | `{{Document.receiver.additional_name}}` ? `{{Document.receiver.address_1}}` : `{{Document.receiver.address_2}}` |
+| debtor-address-linethree           | Debtor Address Third Line          | yes      | `{{Document.receiver.additional_name}}` ? `{{Document.receiver.address_2}}` : `''`                              |
+| debtor-city                        | Debtor City                        | yes      | `{{Document.receiver.address_town}}`                                                                            |
+| debtor-country                     | Debtor Country                     | yes      | `{{Document.receiver.address_country_code}}`                                                                    |  
+| debtor-postcode                    | Debtor Postcode                    | yes      | `{{Document.receiver.address_zip}}`                                                                             |
+| debtor-iban                        | Debtor Iban                        | yes      | `{{Document.receiver.iban}}`                                                                                    |  
+| debtor-email                       | Debtor Email                       | yes      | `{{Document.receiver.email}}`                                                                                   |  
+| debtor-preferred-document-delivery | Debtor Preferred Document Delivery | yes      | `{{Document.receiver.preferred_document_delivery}}`                                                             |
+| payment-subtotal                   | Payment Subtotal                   | yes      | `{{Subtotal}}`                                                                                                  |
+| payment-total                      | Payment Total                      | yes      | `{{Total}}`                                                                                                     |
+| due-payable                        | Payment Amount                     | yes      | `{{BalanceOutstanding}}`                                                                                        |  
+| payment-currency                   | Payment Currency                   | yes      | `{{CurrencySymbol}}` ?? `{{Currency}}` ?? `'CHF'`                                                               |
+
+#### examples
+```handlebars
+{{electronic-invoice "factur-x"}}
+{{electronic-invoice "factur-x" language="en" summarize-items="item-name" invoice-id="i1" invoice-title="it" invoice-date="2099-12-12" creditor-hash="c1" creditor-name="cn" creditor-address-lineone="cl1"" creditor-address-linetwo="cl2" creditor-address-linethree="cl3" creditor-country="cc" creditor-postcode="9988" creditor-city="cc" creditor-email="ce" debtor-hash="d1" debtor-name="dn" debtor-address-lineone="dl1" debtor-address-linetwo="dl2" debtor-address-linethree="dl3" debtor-country="dc" debtor-postcode="6655" debtor-city="dc" debtor-email="de" debtor-preferred-document-delivery="PhysicalMail" payment-subtotal="50.00" payment-total="99.99" due-payable="99.90" payment-currency="pcu"}}
+```
